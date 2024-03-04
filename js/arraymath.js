@@ -44,12 +44,11 @@ export function ArrayShape(Array0) {
 }
 
 export function PrintArray(Array0, Log=true) {
-    console.log("TEST PRINT");
     if (Array.isArray(Array0)) {
         let Output = "[";
         let ArrLength = Array.length;
         if (ArrLength > 0) {
-            Output += PrintArray(Array0[0]);
+            Output += PrintArray(Array0[0], Log=false);
             for (let ArrIndex = 1; ArrIndex < ArrLength; ArrIndex++) {
                 Output += ", " + PrintArray(Array0[ArrIndex], Log=false);
             }
