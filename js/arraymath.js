@@ -29,6 +29,7 @@ function ArrayShape(Array0) {
 }
 
 function PrintArray(Array0, Log=true) {
+    console.log("TEST");
     if (Array.IsArray(Array0)) {
         let Output = "[";
         let ArrLength = Array.length();
