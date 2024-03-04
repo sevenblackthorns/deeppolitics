@@ -1,6 +1,6 @@
 export function SimpleArrayRank(Array0) {
     if (Array.isArray(Array0)) {
-        if (Array0.length() > 0) {
+        if (Array0.length > 0) {
             let Rank = SimpleArrayRank(Array0[0]) + 1;
         }
     }
@@ -9,7 +9,7 @@ export function SimpleArrayRank(Array0) {
 
 export function ArrayShape(Array0) {
     if (Array.isArray(Array0)) {
-        let ArrLength = Array0.length()
+        let ArrLength = Array0.length;
         if (Arrlength > 0) {
             let ArrEl0Shape = ArrayShape(Array0[0]);
             for (let ArrIndex = 1; ArrIndex < ArrLength; ArrIndex++) {
@@ -32,7 +32,7 @@ export function PrintArray(Array0, Log=true) {
     console.log("TEST PRINT");
     if (Array.isArray(Array0)) {
         let Output = "[";
-        let ArrLength = Array.length();
+        let ArrLength = Array.length;
         if (ArrLength > 0) {
             Output += PrintArray(Array0[0]);
             for (let ArrIndex = 1; ArrIndex < ArrLength; ArrIndex++) {
