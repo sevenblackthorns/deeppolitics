@@ -1,3 +1,18 @@
+export function SimpleArrayComparison(Arrays) {
+    for (let ArrIndex = 1; ArrIndex < Arrays.length; ArrIndex++) {
+        if (Arrays[ArrIndex].length != Arrays[ArrIndex].length) {
+            return false;
+        }
+    }
+    for (let ArrIndex = 0; ArrIndex < Arrays[0].length; ArrIndex++) {
+        for (let ArrIndex0 = 1; ArrIndex0 < Arrays.length; ArrIndex0++) {
+            if (Arrays[ArrIndex0][ArrIndex] != Arrays[0][ArrIndex]) {
+                return false;
+            }
+        }
+    }
+}
+
 export function SimpleArrayRank(Array0) {
     if (Array.isArray(Array0)) {
         if (Array0.length > 0) {
@@ -13,7 +28,7 @@ export function ArrayShape(Array0) {
         if (ArrLength > 0) {
             let ArrEl0Shape = ArrayShape(Array0[0]);
             for (let ArrIndex = 1; ArrIndex < ArrLength; ArrIndex++) {
-                if (ArrEl0Shape != ArrayShape(Array0[ArrIndex])) {
+                if (SimpleArrayComparison([ArrEl0Shape, ArrayShape(Array0[ArrIndex])])) {
                     throw "DEEP:0 - INVALID SHAPE ERROR";
                 }
             }
