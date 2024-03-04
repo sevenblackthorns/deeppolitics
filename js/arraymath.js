@@ -45,6 +45,7 @@ export function ArrayShape(Array0) {
 
 export function PrintArray(Array0, Log=true) {
     if (Array.isArray(Array0)) {
+        console.log("E");
         let Output = "[";
         let ArrLength = Array0.length;
         if (ArrLength > 0) {
