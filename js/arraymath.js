@@ -16,7 +16,7 @@ export function SimpleArrayComparison(Arrays) {
 export function SimpleArrayRank(Array0) {
     if (Array.isArray(Array0)) {
         if (Array0.length > 0) {
-            let Rank = SimpleArrayRank(Array0[0]) + 1;
+            return Rank = SimpleArrayRank(Array0[0]) + 1;
         }
     }
     return -1;
