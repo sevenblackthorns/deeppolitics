@@ -28,4 +28,23 @@ function ArrayShape(Array0) {
     }
 }
 
-
+function PrintArray(Array0, Log=true) {
+    if (Array.IsArray(Array0)) {
+        let Output = "[";
+        let ArrLength = Array.length();
+        if (ArrLength > 0) {
+            Output += PrintArray(Array0[0]);
+            for (let ArrIndex = 1; ArrIndex < ArrLength; ArrIndex++) {
+                Output += ", " + PrintArray(Array0[ArrIndex], Log=false);
+            }
+        }
+        Output += "]";
+        if (Log) {
+            console.log(Output);
+        }
+        return Output;
+    }
+    else {
+        return String(Array0);
+    }
+}
