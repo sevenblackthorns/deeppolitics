@@ -48,3 +48,5 @@ function PrintArray(Array0, Log=true) {
         return String(Array0);
     }
 }
+
+export {SimpleArrayRank, ArrayShape, PrintArray};
