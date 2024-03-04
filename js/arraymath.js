@@ -1,4 +1,4 @@
-function SimpleArrayRank(Array0) {
+export function SimpleArrayRank(Array0) {
     if (Array.IsArray(Array0)) {
         if (Array0.length() > 0) {
             let Rank = SimpleArrayRank(Array0[0]) + 1;
@@ -7,7 +7,7 @@ function SimpleArrayRank(Array0) {
     return -1;
 }
 
-function ArrayShape(Array0) {
+export function ArrayShape(Array0) {
     if (Array.IsArray(Array0)) {
         let ArrLength = Array0.length()
         if (Arrlength > 0) {
@@ -28,7 +28,7 @@ function ArrayShape(Array0) {
     }
 }
 
-function PrintArray(Array0, Log=true) {
+export function PrintArray(Array0, Log=true) {
     console.log("TEST PRINT");
     if (Array.IsArray(Array0)) {
         let Output = "[";
@@ -49,5 +49,3 @@ function PrintArray(Array0, Log=true) {
         return String(Array0);
     }
 }
-
-export {SimpleArrayRank, ArrayShape, PrintArray};
