@@ -44,7 +44,7 @@ export function ArrayShape(Array0) {
 }
 
 export function PrintArray(Array0, Log=true) {
-    if (Array0.isArray(Array0)) {
+    if (Array.isArray(Array0)) {
         let Output = "[";
         let ArrLength = Array0.length;
         if (ArrLength > 0) {
