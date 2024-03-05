@@ -54,6 +54,7 @@ export function PrintArray(Array0, Log=true) {
             }
         }
         Output = Output.concat("]");
+        console.log(Output);
         if (Log) {
             console.log(Output);
         }
