@@ -43,7 +43,7 @@ export function ArrayShape(Array0) {
     }
 }
 
-export function PrintArray(Array0, Log=true) {
+export function PrintArray(Array0, Log = true) {
     if (Array.isArray(Array0)) {
         let Output = "[";
         let ArrLength = Array0.length;
