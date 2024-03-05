@@ -48,7 +48,7 @@ export function PrintArray(Array0, Log=true) {
         let Output = "[";
         let ArrLength = Array0.length;
         if (ArrLength > 0) {
-            let Output = Output + PrintArray(Array0[0], Log=false);
+            Output = Output + PrintArray(Array0[0], Log=false);
             for (let ArrIndex = 1; ArrIndex < ArrLength; ArrIndex++) {
                 console.log(ArrIndex);
                 Output = Output + ", " + PrintArray(Array0[ArrIndex], Log=false);
