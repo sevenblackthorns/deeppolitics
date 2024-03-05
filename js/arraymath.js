@@ -80,9 +80,44 @@ export function PrintArray(Array0) {
     }
 }
 
-export function ArrayAdd(Array0, Array1) {
+export function ArrayOp(Array0, Array1, Op) {
     if (Array.isArray(Array0) == false && Array.isArray(Array1) == false) {
-        return Array0 + Array1;
+        if (Op == "+") {
+            return Array0 + Array1;
+        }
+        else if (Op == "-") {
+            return Array0 - Array1;
+        }
+        else if (Op == "*") {
+            return Array0 * Array1;
+        }
+        else if (Op == "/") {
+            return Array0 / Array1;
+        }
+        else if (Op == "**") {
+            return Array0 ** Array1;
+        }
+        else if (Op == "==") {
+            return Array0 == Array1;
+        }
+        else if (Op == ">") {
+            return Array0 > Array1;
+        }
+        else if (Op == "<") {
+            return Array0 < Array1;
+        }
+        else if (Op == ">=") {
+            return Array0 >= Array1;
+        }
+        else if (Op == "<=") {
+            return Array0 <= Array1;
+        }
+        else if (Op == "!=") {
+            return Array0 != Array1;
+        }
+        else {
+            throw "DEEP:2 - INVALID OPERATOR";
+        }
     }
     let Rank0 = SimpleArrayRank(Array0);
     let Rank1 = SimpleArrayRank(Array0);
@@ -109,7 +144,7 @@ export function ArrayAdd(Array0, Array1) {
         if (Shape0[i] % Shape1[i] == 0 || Shape1[i] % Shape0[i] == 0) {
             let Array2 = [];
             for (let i=0; i < Math.max(Shape0[0], Shape1[0]); i++) {
-                Array2[i] = ArrayAdd(Array0[i % Shape0[0]], Array1[i % Shape1[0]]);
+                Array2[i] = ArrayOp(Array0[i % Shape0[0]], Array1[i % Shape1[0]], Op);
             }
             return Array2;
         }
