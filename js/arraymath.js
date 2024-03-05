@@ -82,6 +82,8 @@ export function PrintArray(Array0) {
 
 export function ArrayAdd(Array0, Array1) {
     if (Array.isArray(Array0) == false && Array.isArray(Array1) == false) {
+        console.log(Array0);
+        console.log(Array1);
         return Array0 + Array1;
     }
     let Rank0 = SimpleArrayRank(Array0);
