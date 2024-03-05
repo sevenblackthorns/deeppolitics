@@ -11,6 +11,7 @@ export function SimpleArrayComparison(Arrays) {
             }
         }
     }
+    return true;
 }
 
 export function SimpleArrayRank(Array0) {
