@@ -43,7 +43,7 @@ export function ArrayShape(Array0) {
     }
 }
 
-export function PrintArray(Array0, Log = true) {
+export function PrintArrayLogless(Array0) {
     if (Array.isArray(Array0)) {
         let Output = "[";
         let ArrLength = Array0.length;
@@ -54,9 +54,25 @@ export function PrintArray(Array0, Log = true) {
             }
         }
         Output = Output.concat("]");
-        if (Log == true) {
-            console.log(Output);
+        return Output;
+    }
+    else {
+        return String(Array0);
+    }
+}
+
+export function PrintArray(Array0) {
+    if (Array.isArray(Array0)) {
+        let Output = "[";
+        let ArrLength = Array0.length;
+        if (ArrLength > 0) {
+            Output = Output.concat(PrintArrayLogless(Array0[0]);
+            for (let ArrIndex = 1; ArrIndex < ArrLength; ArrIndex++) {
+                Output = Output.concat(", ", PrintArrayLogless(Array0[ArrIndex]);
+            }
         }
+        Output = Output.concat("]");
+        console.log(Output);
         return Output;
     }
     else {
