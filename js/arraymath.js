@@ -49,12 +49,12 @@ export function PrintArray(Array0, Log=true) {
         let Output = "[";
         let ArrLength = Array0.length;
         if (ArrLength > 0) {
-            Output = Output + PrintArray(Array0[0], Log=false);
+            let Output = Output + PrintArray(Array0[0], Log=false);
             for (let ArrIndex = 1; ArrIndex < ArrLength; ArrIndex++) {
-                Output = Output + ", " + PrintArray(Array0[ArrIndex], Log=false);
+                let Output = Output + ", " + PrintArray(Array0[ArrIndex], Log=false);
             }
         }
-        Output = Output + "]";
+        let Output = Output + "]";
         if (Log) {
             console.log(Output);
         }
