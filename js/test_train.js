@@ -1,7 +1,14 @@
-import {SimpleArrayRank, ArrayShape, ArrayAdd, PrintArray} from "./arraymath.js";
+import {SimpleArrayRank, ArrayShape, ArrayOp, PrintArray} from "./arraymath.js";
 let Array0 = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]];
 console.log(SimpleArrayRank(Array0));
 PrintArray(ArrayShape(Array0), true);
 PrintArray(Array0, true);
-let Array1 = ArrayAdd(Array0, Array0);
+console.log("-------------------------------");
+let Array1 = ArrayOp(Array0, 2, "*");
 PrintArray(Array1);
+let Array2 = ArrayOp(Array0, Array1, "-");
+PrintArray(Array2);
+let Array3 = ArrayOp(Array2, 3, "**");
+PrintArray(Array3);
+let Array4 = ArrayOp(Array0, Array0, "==");
+PrintArray(Array4);
