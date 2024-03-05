@@ -108,7 +108,7 @@ export function ArrayAdd(Array0, Array1) {
     for (let i=0; i < Shape0.length; i++) {
         if (Shape0[i] % Shape1[i] == 0 || Shape1[i] % Shape0[i] == 0) {
             let Array2 = [];
-            for (let i=0; i < math.max(Shape0[0], Shape1[0]); i++) {
+            for (let i=0; i < Math.max(Shape0[0], Shape1[0]); i++) {
                 Array2[i] = ArrayAdd(Array0[i % Shape0[0]], Array1[i % Shape0[1]]);
             }
             return Array2;
