@@ -28,7 +28,6 @@ export function ArrayShape(Array0) {
         let ArrLength = Array0.length;
         if (ArrLength > 0) {
             let ArrEl0Shape = ArrayShape(Array0[0]);
-            console.log(Array0);
             for (let ArrIndex = 1; ArrIndex < ArrLength; ArrIndex++) {
                 if (SimpleArrayComparison([ArrEl0Shape, ArrayShape(Array0[ArrIndex])]) == false) {
                     throw "DEEP:0 - INVALID SHAPE ERROR.";
@@ -134,6 +133,8 @@ export function ArrayOp(Array0, Array1, Op) {
             Array1 = [Array1];
         }
     }
+    console.log(Array0);
+    console.log(Array1);
     let Shape0 = ArrayShape(Array0);
     let Shape1 = ArrayShape(Array1);
     if (Shape0[Shape0.length - 1] == 0) {
