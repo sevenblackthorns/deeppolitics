@@ -1,5 +1,5 @@
 export function SimpleArrayComparison(Arrays) {
-    for (let ArrIndex = 1; ArrIndex < Arrays.length; ArrIndex++) {
+    for (let ArrIndex = 0; ArrIndex < Arrays.length; ArrIndex++) {
         if (Arrays[ArrIndex].length != Arrays[ArrIndex].length) {
             return false;
         }
@@ -117,7 +117,7 @@ export function ArrayOp(Array0, Array1, Op) {
             return Array0 != Array1;
         }
         else {
-            throw "DEEP:2 - INVALID OPERATOR";
+            throw "DEEP:2 - INVALID OPERATOR ERROR";
         }
     }
     let Rank0 = SimpleArrayRank(Array0);
