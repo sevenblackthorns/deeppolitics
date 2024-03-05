@@ -153,3 +153,47 @@ export function ArrayOp(Array0, Array1, Op) {
         }
     }
 }
+
+export function ArrayAdd(Array0, Array1) {
+    return ArrayOp(Array0, Array1, "+");
+}
+
+export function ArraySubtract(Array0, Array1) {
+    return ArrayOp(Array0, Array1, "-");
+}
+
+export function ArrayMultiply(Array0, Array1) {
+    return ArrayOp(Array0, Array1, "*");
+}
+
+export function ArrayDivide(Array0, Array1) {
+    return ArrayOp(Array0, Array1, "/");
+}
+
+export function ArrayPower(Array0, Array1) {
+    return ArrayOp(Array0, Array1, "**");
+}
+
+export function ArrayEqualComparison(Array0, Array1) {
+    return ArrayOp(Array0, Array1, "==");
+}
+
+export function ArrayUnequalComparison(Array0, Array1) {
+    return ArrayOp(Array0, Array1, "!=");
+}
+
+export function ArrayLesserThanComparison(Array0, Array1) {
+    return ArrayOp(Array0, Array1, "<");
+}
+
+export function ArrayGreaterThanComparison(Array0, Array1) {
+    return ArrayOp(Array0, Array1, ">");
+}
+
+export function ArrayEqualLesserComparison(Array0, Array1) {
+    return ArrayOp(Array0, Array1, "<=");
+}
+
+export function ArrayEqualGreaterComparison(Array0, Array1) {
+    return ArrayOp(Array0, Array1, ">=");
+}
