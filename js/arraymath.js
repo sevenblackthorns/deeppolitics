@@ -105,7 +105,6 @@ export function ArrayAdd(Array0, Array1) {
     if (Shape1[Shape1.length - 1] == 0) {
         Shape1.pop();
     }
-    let Shape1 = ArrayShape(Array1);
     for (let i=0; i < Shape0.length; i++) {
         if (Shape0[i] % Shape1[i] == 0 || Shape1[i] % Shape0[i] == 0) {
             let Array2 = [];
