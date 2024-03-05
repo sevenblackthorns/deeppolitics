@@ -30,7 +30,7 @@ export function ArrayShape(Array0) {
             let ArrEl0Shape = ArrayShape(Array0[0]);
             console.log(Array0);
             for (let ArrIndex = 1; ArrIndex < ArrLength; ArrIndex++) {
-                if (SimpleArrayComparison([ArrEl0Shape, ArrayShape(Array0[ArrIndex])])) {
+                if (SimpleArrayComparison([ArrEl0Shape, ArrayShape(Array0[ArrIndex])]) == false) {
                     throw "DEEP:0 - INVALID SHAPE ERROR.";
                 }
             }
