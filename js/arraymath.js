@@ -98,6 +98,7 @@ export function ArrayAdd(Array0, Array1) {
         }
     }
     let Shape0 = ArrayShape(Array0);
+    let Shape0 = ArrayShape(Array1);
     if (Shape0[Shape0.length - 1] == 0) {
         Shape0.pop();
     }
