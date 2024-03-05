@@ -86,7 +86,7 @@ export function ArrayAdd(Array0, Array1) {
     }
     let Rank0 = SimpleArrayRank(Array0);
     let Rank1 = SimpleArrayRank(Array0);
-    let DepthDiff = math.abs(Rank0 - Rank1);
+    let DepthDiff = Math.abs(Rank0 - Rank1);
     if (Rank0 < Rank1) {
         for (let i=0; i < DepthDiff; i++) {
             Array0 = [Array0];
