@@ -68,7 +68,7 @@ export function PrintArray(Array0) {
         if (ArrLength > 0) {
             Output = Output.concat(PrintArrayLogless(Array0[0]));
             for (let ArrIndex = 1; ArrIndex < ArrLength; ArrIndex++) {
-                Output = Output.concat(", ", PrintArrayLogless(Array0[ArrIndex]);
+                Output = Output.concat(", ", PrintArrayLogless(Array0[ArrIndex]));
             }
         }
         Output = Output.concat("]");
