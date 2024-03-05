@@ -1,6 +1,6 @@
 export function SimpleArrayComparison(Arrays) {
-    for (let ArrIndex = 0; ArrIndex < Arrays.length; ArrIndex++) {
-        if (Arrays[ArrIndex].length != Arrays[ArrIndex].length) {
+    for (let ArrIndex = 1; ArrIndex < Arrays.length; ArrIndex++) {
+        if (Arrays[ArrIndex].length != Arrays[0].length) {
             return false;
         }
     }
