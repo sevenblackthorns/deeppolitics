@@ -48,12 +48,12 @@ export function PrintArray(Array0, Log=true) {
         let Output = "[";
         let ArrLength = Array0.length;
         if (ArrLength > 0) {
-            Output = Output.concat("", PrintArray(Array0[0], Log=false));
+            Output = Output.concat(PrintArray(Array0[0], Log=false));
             for (let ArrIndex = 1; ArrIndex < ArrLength; ArrIndex++) {
-                Output = Output.concat("", ", ", PrintArray(Array0[ArrIndex], Log=false));
+                Output = Output.concat(", ", PrintArray(Array0[ArrIndex], Log=false));
             }
         }
-        Output = Output.concat("", "]");
+        Output = Output.concat("]");
         if (Log) {
             console.log(Output);
         }
