@@ -50,7 +50,7 @@ export function PrintArray(Array0, Log=true) {
         if (ArrLength > 0) {
             let Output = Output + PrintArray(Array0[0], Log=false);
             for (let ArrIndex = 1; ArrIndex < ArrLength; ArrIndex++) {
-                echo ArrIndex;
+                console.log(ArrIndex);
                 Output = Output + ", " + PrintArray(Array0[ArrIndex], Log=false);
             }
         }
