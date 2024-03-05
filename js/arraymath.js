@@ -79,3 +79,22 @@ export function PrintArray(Array0) {
         return String(Array0);
     }
 }
+
+export function ArrayAdd(Array0, Array1) {
+    let Rank0 = SimpleArrayRank(Array0);
+    let Rank1 = SimpleArrayRank(Array0);
+    let DepthDiff = math.abs(Rank0 - Rank1);
+    if (Rank0 < Rank1) {
+        for (let i=0; i < DepthDiff; i++) {
+            Array0 = [Array0];
+        }
+    }
+    else {
+        for (let i=0; i < DepthDiff; i++) {
+            Array1 = [Array1];
+        }
+    }
+    let Shape0 = ArrayShape(Array0);
+    let Shape1 = ArrayShape(Array1);
+    
+}
