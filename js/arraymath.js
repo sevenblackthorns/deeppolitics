@@ -81,7 +81,7 @@ export function PrintArray(Array0) {
 }
 
 export function ArrayAdd(Array0, Array1) {
-    if (Array.isArray(Array0) == false and Array.isArray(Array1) == false) {
+    if (Array.isArray(Array0) == false && Array.isArray(Array1) == false) {
         return Array0 + Array1;
     }
     let Rank0 = SimpleArrayRank(Array0);
@@ -106,7 +106,7 @@ export function ArrayAdd(Array0, Array1) {
     }
     let Shape1 = ArrayShape(Array1);
     for (let i=0; i < Shape0.length; i++) {
-        if (Shape0[i] % Shape1[i] == 0 or Shape1[i] % Shape0[i] == 0) {
+        if (Shape0[i] % Shape1[i] == 0 || Shape1[i] % Shape0[i] == 0) {
             let Array2 = [];
             for (let i=0; i < math.max(Shape0[0], Shape1[0]); i++) {
                 Array2[i] = ArrayAdd(Array0[i % Shape0[0]], Array1[i % Shape0[1]]);
