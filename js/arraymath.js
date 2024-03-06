@@ -160,7 +160,8 @@ export function ArrayOp(Array0, Array1, Op) {
     }
 }
 
-export function ArrayIndex(Array0, Indexes) {
+export function ArrayIndex(Array0, Indexes0) {
+    local Indexes = Indexes0.slice();
     let Array0View = [];
     let Start = Indexes[0][0];
     let End = Indexes[0][1];
