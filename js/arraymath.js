@@ -161,7 +161,6 @@ export function ArrayOp(Array0, Array1, Op) {
 }
 
 export function ArrayIndex(Array0, Indexes0) {
-    let Indexes = Indexes0.slice();
     let Array0View = [];
     let Start = Indexes[0][0];
     let End = Indexes[0][1];
@@ -170,13 +169,16 @@ export function ArrayIndex(Array0, Indexes0) {
     for (let i=1; i <= Indexes.length; i++) {
         NewIndexes.push(Indexes[i]);
     }
-    console.log(NewIndexes);
     for (let i=Start; i <= End; i += Step) {
         if (NewIndexes.length > 0) {
-            Array0View.push(ArrayIndex(Array0[i], NewIndexes));
+            if (NewIndexes[0] != undefined) {
+                Array0View.push(ArrayIndex(Array0[i], NewIndexes));
+            }
+            else {
+                Array0View.push(Array0[i]);
+            }
         }
         else {
-            console.log("TEST 0");
             Array0View.push(Array0[i]);
         }
     }
