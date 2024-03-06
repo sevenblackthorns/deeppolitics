@@ -180,7 +180,7 @@ export function ArrayIndex(Array0, Indexes) {
     return  Array0View;
 }
 
-export function ArrayReshapeSub(Array0, NewShape0) {
+export function SubArrayReshape(Array0, NewShape0) {
     
 }
 
@@ -198,5 +198,9 @@ export function ArrayReshape(Array0, NewShape0) {
         throw "DEEP:3 - SHAPES " + Shape0 + " AND " + NewShape0 + " DO NOT HAVE EQUAL SIZES " + Size0 + " AND " + NewSize0 + ".";
     }
     let FlatArray0 = Array.flat(Array0, Shape0.length);
-    
+    let NewArray0 = [];
+    let SubNewShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length, 1]]);
+    for (let i=0; i < NewShape0[0]; i++) {
+        NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * NewShape0[0], (i + 1) * NewShape0[0], 1]]), SubArrayShape0);
+    }
 }
