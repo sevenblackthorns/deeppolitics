@@ -160,7 +160,7 @@ export function ArrayOp(Array0, Array1, Op) {
     }
 }
 
-export function ArrayIndex(Array0, Indexes0) {
+export function ArrayIndex(Array0, Indexes) {
     let Array0View = [];
     let Start = Indexes[0][0];
     let End = Indexes[0][1];
