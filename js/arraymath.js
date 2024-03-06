@@ -166,7 +166,7 @@ export function ArrayIndex(Array0, Indexes) {
     let End = Indexes[0][1];
     let Step = Indexes[0][2];
     let NewIndexes = [];
-    for let i=1; i <= Indexes.length; i++) {
+    for (let i=1; i <= Indexes.length; i++) {
         NewIndexes[i - 1] = Indexes[i];
     }
     for (let i=Start; i <= End; i += Step) {
