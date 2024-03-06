@@ -36,11 +36,11 @@ export function ArrayShape(Array0) {
             return [ArrLength].concat(ArrEl0Shape);
         }
         else {
-            return [0];
+            return [];
         }
     }
     else {
-        return [0];
+        return [];
     }
 }
 
@@ -155,51 +155,22 @@ export function ArrayOp(Array0, Array1, Op) {
             return Array2;
         }
         else {
-            throw "DEEP:1 - INCOMPATIBLE SHAPES ERROR.";
+            throw "DEEP:1 - SHAPES " + Shape0 + " AND " + Shape1 + " ARE NOT COMPATIBLE.";
         }
     }
 }
 
-export function ArrayAdd(Array0, Array1) {
-    return ArrayOp(Array0, Array1, "+");
-}
-
-export function ArraySubtract(Array0, Array1) {
-    return ArrayOp(Array0, Array1, "-");
-}
-
-export function ArrayMultiply(Array0, Array1) {
-    return ArrayOp(Array0, Array1, "*");
-}
-
-export function ArrayDivide(Array0, Array1) {
-    return ArrayOp(Array0, Array1, "/");
-}
-
-export function ArrayPower(Array0, Array1) {
-    return ArrayOp(Array0, Array1, "**");
-}
-
-export function ArrayEqualComparison(Array0, Array1) {
-    return ArrayOp(Array0, Array1, "==");
-}
-
-export function ArrayUnequalComparison(Array0, Array1) {
-    return ArrayOp(Array0, Array1, "!=");
-}
-
-export function ArrayLesserThanComparison(Array0, Array1) {
-    return ArrayOp(Array0, Array1, "<");
-}
-
-export function ArrayGreaterThanComparison(Array0, Array1) {
-    return ArrayOp(Array0, Array1, ">");
-}
-
-export function ArrayEqualLesserComparison(Array0, Array1) {
-    return ArrayOp(Array0, Array1, "<=");
-}
-
-export function ArrayEqualGreaterComparison(Array0, Array1) {
-    return ArrayOp(Array0, Array1, ">=");
+function ArrayReshape(Array0, NewShape0) {
+    let Shape0 = ArrayShape(Array0);
+    let Size0 = 1;
+    for (let i=0; i < Shape0.length; i++) {
+        Size0 *= Shape0[i];
+    }
+    let NewSize0 = 1;
+    for (let i=0; i < NewShape0.length; i++) {
+        NewSize0 *= NewShape0[i];
+    }
+    if (Size0 != NewSize0) {
+        throw "DEEP:3 - SHAPES " + Shape0 + " AND " + NewShape0 + " DO NOT HAVE EQUAL SIZES " + Size0 + " AND " + NewSize0 + ".";
+    }
 }
