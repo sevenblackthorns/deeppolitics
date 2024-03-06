@@ -6,6 +6,6 @@ PrintArray(ArrayShape(Array1));
 let Array2 = ArrayReshape(Array1, [6]);
 PrintArray(Array2);
 PrintArray(ArrayShape(Array2));
-let Array3 = ArrayRehsape(Array1, [1, 1, 1, 3, 2]);
+let Array3 = ArrayReshape(Array1, [1, 1, 1, 3, 2]);
 PrintArray(Array3);
 PrintArray(ArrayShape(Array3));
