@@ -160,7 +160,31 @@ export function ArrayOp(Array0, Array1, Op) {
     }
 }
 
-function ArrayReshape(Array0, NewShape0) {
+export function ArrayIndex(Array0, Indexes) {
+    let Array0View = [];
+    let Start = Indexes[0][0];
+    let End = Indexes[0][1];
+    let Step = Indexes[0][2];
+    let NewIndexes = [];
+    for let i=1; i <= Indexes.length; i++) {
+        NewIndexes[i - 1] = Indexes[i];
+    }
+    for (let i=Start; i <= End; i += Step) {
+        if (NewIndexes.length > 0) {
+            Array0View.push(ArrayIndex(Array0[i], NewIndexes));
+        }
+        else {
+            Array0View.push(Array0[i]);
+        }
+    }
+    return  Array0View;
+}
+
+export function ArrayReshapeSub(Array0, NewShape0) {
+    
+}
+
+export function ArrayReshape(Array0, NewShape0) {
     let Shape0 = ArrayShape(Array0);
     let Size0 = 1;
     for (let i=0; i < Shape0.length; i++) {
@@ -173,4 +197,6 @@ function ArrayReshape(Array0, NewShape0) {
     if (Size0 != NewSize0) {
         throw "DEEP:3 - SHAPES " + Shape0 + " AND " + NewShape0 + " DO NOT HAVE EQUAL SIZES " + Size0 + " AND " + NewSize0 + ".";
     }
+    let FlatArray0 = Array.flat(Array0, Shape0.length);
+    
 }
