@@ -214,7 +214,7 @@ export function ArrayReshape(Array0, NewShape0) {
     if (Size0 != NewSize0) {
         throw "DEEP:3 - SHAPES " + Shape0 + " AND " + NewShape0 + " DO NOT HAVE EQUAL SIZES " + Size0 + " AND " + NewSize0 + ".";
     }
-    let FlatArray0 = Array.flat(Array0, Shape0.length);
+    let FlatArray0 = Array0.flat(Shape0.length);
     let NewArray0 = [];
     if (NewShape0.length > 1) {
         let SubNewShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length, 1]]);
