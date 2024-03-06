@@ -167,13 +167,15 @@ export function ArrayIndex(Array0, Indexes) {
     let Step = Indexes[0][2];
     let NewIndexes = [];
     for (let i=1; i <= Indexes.length; i++) {
-        NewIndexes[i - 1] = Indexes[i];
+        NewIndexes.push(Indexes[i]);
     }
+    console.log(NewIndexes);
     for (let i=Start; i <= End; i += Step) {
         if (NewIndexes.length > 0) {
             Array0View.push(ArrayIndex(Array0[i], NewIndexes));
         }
         else {
+            console.log("TEST 0");
             Array0View.push(Array0[i]);
         }
     }
