@@ -189,7 +189,6 @@ export function SubArrayReshape(Array0, NewShape0) {
     let Shape0 = ArrayShape(Array0);
     let FlatArray0 = Array0;
     let NewArray0 = [];
-    console.log(NewShape0.length)
     if (NewShape0.length > 1) {
         let SubArrayShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length - 1, 1]]);
         for (let i=0; i < NewShape0[0]; i++) {
@@ -217,7 +216,6 @@ export function ArrayReshape(Array0, NewShape0) {
     }
     let FlatArray0 = Array0.flat(Shape0.length);
     let NewArray0 = [];
-    console.log(NewShape0.length)
     if (NewShape0.length > 1) {
         let SubArrayShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length - 1, 1]]);
         for (let i=0; i < NewShape0[0]; i++) {
