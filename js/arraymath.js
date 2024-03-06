@@ -181,7 +181,19 @@ export function ArrayIndex(Array0, Indexes) {
 }
 
 export function SubArrayReshape(Array0, NewShape0) {
-    
+    let Shape0 = ArrayShape(Array0);
+    let FlatArray0 = Array0;
+    let NewArray0 = [];
+    if (NewShape0.length > 1) {
+        let SubNewShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length, 1]]);
+        for (let i=0; i < NewShape0[0]; i++) {
+            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * NewShape0[0], (i + 1) * NewShape0[0], 1]]), SubArrayShape0);
+        }
+    }
+    else {
+        NewArray0 = FlatArray0;
+    }
+    return NewArray0;
 }
 
 export function ArrayReshape(Array0, NewShape0) {
@@ -199,8 +211,14 @@ export function ArrayReshape(Array0, NewShape0) {
     }
     let FlatArray0 = Array.flat(Array0, Shape0.length);
     let NewArray0 = [];
-    let SubNewShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length, 1]]);
-    for (let i=0; i < NewShape0[0]; i++) {
-        NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * NewShape0[0], (i + 1) * NewShape0[0], 1]]), SubArrayShape0);
+    if (NewShape0.length > 1) {
+        let SubNewShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length, 1]]);
+        for (let i=0; i < NewShape0[0]; i++) {
+            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * NewShape0[0], (i + 1) * NewShape0[0], 1]]), SubArrayShape0);
+        }
     }
+    else {
+        NewArray0 = FlatArray0;
+    }
+    return NewArray0;
 }
