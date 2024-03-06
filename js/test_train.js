@@ -3,3 +3,6 @@ let Array0 = [[[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]], [[13, 14, 15], [1
 let Array1 = ArrayIndex(Array0, [[0, 0, 1], [0, 2, 2], [0, 3, 1]]);
 PrintArray(Array1);
 PrintArray(ArrayShape(Array1));
+let Array2 = ArrayReshape(Array1);
+PrintArray(Array2);
+PrintArray(ArrayShape(Array2));
