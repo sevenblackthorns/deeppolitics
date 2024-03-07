@@ -246,32 +246,26 @@ export function ArrayDot(Array0, Array1, Axes) {
         throw "DEEP:4 - " + Shape0 + "'S DIMENSION " + Axes[1] + " AND " + Shape1 + "'S DIMENSION " + Axes[0] + " DO DO NOT MATCH.";
     }
     let Array2 = [];
-    let Index00 = [];
-    let Index10 = [];
-    let Index01 = [];
-    let Index11 = [];
-    for (let i=0; i < Axes[0]; i++) {
-        Index00.push([0, Shape0[i], 1]);
-        Index10.push([0, Shape1[i], 1]);
-    }
-    for (let i=0; i < Axes[1] - Axes[0]; i++) {
-        Index01.push([0, Shape0[i], 1]);
-        Index11.push([0, Shape1[i], 1]);
+    let Index0 = [];
+    let Index1 = [];
+    for (let i=0; i < Axes[1]; i++) {
+        Index0.push([0, Shape0[i], 1]);
+        Index1.push([0, Shape1[i], 1]);
     }
     for (let i=0; i < Shape0[Axes[0]]; i++) {
         Array2.push([]);
         for (let j=0; j < Shape1[Axes[1]]; j++) {
             let Sum = 0;
             for (let k=0; k < Shape1[Axes[0]]; k++) {
-                Index00[Index00.length - 1] = [i, i, 1];
-                Index01[Index01.length - 1] = [j, j, 1];
-                Index10[Index10.length - 1] = [j, j, 1];
-                Index11[Index11.length - 1] = [k, k, 1];
-                console.log(ArrayShape(ArrayIndex(Array0, Index00.concat(Index01))));
-                console.log(ArrayShape(ArrayIndex(Array1, Index10.concat(Index11))));
-                console.log(Index00.concat(Index01));
-                console.log(Index10.concat(Index11));
-                Sum += ArrayOp(ArrayIndex(Array0, Index00.concat(Index01)), ArrayIndex(Array1, Index10.concat(Index11)), "*");
+                Index0[Axes[0] - 1] = [i, i, 1];
+                Index1[Axes[0] - 1] = [j, j, 1];
+                Index0[Axes[1] - 1] = [j, j, 1];
+                Index1[Axes[1] - 1] = [k, k, 1];
+                console.log(ArrayShape(ArrayIndex(Array0, Index0)));
+                console.log(ArrayShape(ArrayIndex(Array1, Index1)));
+                console.log(Index0);
+                console.log(Index1);
+                Sum += ArrayOp(ArrayIndex(Array0, Index0), ArrayIndex(Array1, Index1), "*");
             }
             Array2[i].push(Sum);
         }
