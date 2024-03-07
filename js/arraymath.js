@@ -202,7 +202,7 @@ export function SubArrayReshape(Array0, NewShape0) {
     for (let i=0; i < NewShape0.length; i++) {
         NewSize0 *= NewShape0[i];
     }
-    let SubSize0 = NewSize0 / NewShape[0];
+    let SubSize0 = NewSize0 / NewShape0[0];
     console.log(Array0);
     if (NewShape0.length > 1) {
         let SubArrayShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length - 1, 1]]);
@@ -227,7 +227,7 @@ export function ArrayReshape(Array0, NewShape0) {
     for (let i=0; i < NewShape0.length; i++) {
         NewSize0 *= NewShape0[i];
     }
-    let SubSize0 = NewSize0 / NewShape[0];
+    let SubSize0 = NewSize0 / NewShape0[0];
     if (Size0 != NewSize0) {
         throw "DEEP:3 - SHAPES " + Shape0 + " AND " + NewShape0 + " DO NOT HAVE EQUAL SIZES " + Size0 + " AND " + NewSize0 + ".";
     }
