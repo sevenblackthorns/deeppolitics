@@ -254,27 +254,43 @@ export function ArrayDot(Array0, Array1, Axes) {
     if (Shape0[Axes[1]] != Shape1[Axes[0]]) {
         throw "DEEP:4 - " + Shape0 + "'S DIMENSION " + Axes[1] + " AND " + Shape1 + "'S DIMENSION " + Axes[0] + " DO DO NOT MATCH.";
     }
-    let Array2 = [];
-    let Index0 = [];
-    let Index1 = [];
-    for (let i=0; i < Axes[1] + 1; i++) {
-        Index0.push([0, Shape0[i] - 1, 1]);
-        Index1.push([0, Shape1[i] - 1, 1]);
-    }
-    for (let i=0; i < Shape0[Axes[0]]; i++) {
-        for (let j=0; j < Shape1[Axes[1]]; j++) {
-            let Sum = ArrayFill(ArrayIndex(ShapeT, [[Axes[1] - 1, ShapeT.length - 1, 1]]), 0);
-            for (let k=0; k < Shape1[Axes[0]]; k++) {
-                Index0[Axes[0]] = [i, i, 1];
-                Index1[Axes[0]] = [k, k, 1];
-                Index0[Axes[1]] = [k, k, 1];
-                Index1[Axes[1]] = [j, j, 1];
-                Sum = ArrayOp(Sum, ArrayOp(ArrayIndex(Array0, Index0), ArrayIndex(Array1, Index1), "*"), "+");
-            }
-            Array2.push(Sum);
+    if (Axes[0] == 0) {
+        let Array2 = [];
+        let Index0 = [];
+        let Index1 = [];
+        for (let i=0; i < Axes[1] + 1; i++) {
+            Index0.push([0, Shape0[i] - 1, 1]);
+            Index1.push([0, Shape1[i] - 1, 1]);
         }
+        for (let i=0; i < Shape0[Axes[0]]; i++) {
+            Array2.push([]);
+            for (let j=0; j < Shape1[Axes[1]]; j++) {
+                let Sum = ArrayFill(ArrayIndex(ShapeT, [[Axes[1] - 1, ShapeT.length - 1, 1]]), 0);
+                for (let k=0; k < Shape1[Axes[0]]; k++) {
+                    Index0[Axes[0]] = [i, i, 1];
+                    Index1[Axes[0]] = [k, k, 1];
+                    Index0[Axes[1]] = [k, k, 1];
+                    Index1[Axes[1]] = [j, j, 1];
+                    Sum = ArrayOp(Sum, ArrayOp(ArrayIndex(Array0, Index0), ArrayIndex(Array1, Index1), "*"), "+");
+                }
+                Array2[i].push(Sum);
+            }
+        }
+        return Array2;
     }
-    return Array2;
+    else {
+        let Array2 = [];
+        let Index0 = [];
+        let Index1 = [];
+        for (let i=0; i < Axes[1] + 1; i++) {
+            Index0.push([0, Shape0[i] - 1, 1]);
+            Index1.push([0, Shape1[i] - 1, 1]);
+        }
+        for (let i=0; i < Shape0[Axes[0]]; i++) {
+            Array2[i] = ArrayDot(Array0[i % Array0.length], Array1[i % Array1.length], ArrayOp(Axes, 1, "-"));
+        }
+        return Array2;
+    }
 }
 
 export function ArrayTranspose(Array0, Axes) {
