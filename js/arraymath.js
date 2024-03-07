@@ -242,6 +242,15 @@ export function ArrayReshape(Array0, NewShape0) {
 export function ArrayDot(Array0, Array1, Axes) {
     let Shape0 = ArrayShape(Array0);
     let Shape1 = ArrayShape(Array1);
+    let ShapeT = [];
+    for (let i=0; i < Shape0.length; i++) {
+        if (i == Axes[1]) {
+            ShapeT.push(Shape1[i]);
+        }
+        else {
+            ShapeT.push(Shape0[i]);
+        }
+    }
     if (Shape0[Axes[1]] != Shape1[Axes[0]]) {
         throw "DEEP:4 - " + Shape0 + "'S DIMENSION " + Axes[1] + " AND " + Shape1 + "'S DIMENSION " + Axes[0] + " DO DO NOT MATCH.";
     }
@@ -253,17 +262,16 @@ export function ArrayDot(Array0, Array1, Axes) {
         Index1.push([0, Shape1[i] - 1, 1]);
     }
     for (let i=0; i < Shape0[Axes[0]]; i++) {
-        Array2.push([]);
         for (let j=0; j < Shape1[Axes[1]]; j++) {
-            let Sum = 0;
+            let Sum = ArrayFill(ArrayIndex(ShapeT, [[Axes[1], ShapeT.length - 1, 1]]), 0);
             for (let k=0; k < Shape1[Axes[0]]; k++) {
                 Index0[Axes[0]] = [i, i, 1];
                 Index1[Axes[0]] = [k, k, 1];
                 Index0[Axes[1]] = [k, k, 1];
                 Index1[Axes[1]] = [j, j, 1];
-                Sum += ArrayOp(ArrayIndex(Array0, Index0), ArrayIndex(Array1, Index1), "*").flat(Math.max(Shape0.length, Shape1.length))[0];
+                Sum = ArrayOp(Sum, ArrayOp(ArrayIndex(Array0, Index0), ArrayIndex(Array1, Index1), "*"), "+");
             }
-            Array2[i].push(Sum);
+            Array2.push(Sum);
         }
     }
     return Array2;
