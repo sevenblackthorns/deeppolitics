@@ -249,8 +249,8 @@ export function ArrayDot(Array0, Array1, Axes) {
     let Index0 = [];
     let Index1 = [];
     for (let i=0; i < Axes[1] + 1; i++) {
-        Index0.push([0, Shape0[i], 1]);
-        Index1.push([0, Shape1[i], 1]);
+        Index0.push([0, Shape0[i] - 1, 1]);
+        Index1.push([0, Shape1[i] - 1, 1]);
     }
     for (let i=0; i < Shape0[Axes[0]]; i++) {
         Array2.push([]);
