@@ -238,3 +238,11 @@ export function ArrayReshape(Array0, NewShape0) {
     }
     return NewArray0;
 }
+
+export function ArrayDot(Array0, Array1, Axes) {
+    let Shape0 = ArrayShape(Array0);
+    let Shape1 = ArrayShape(Array1);
+    if (Shape0[1] != Shape1[0]) {
+        throw "DEEP:4 - " + Shape0 + "'S DIMENSION 1 AND " + Shape1 + "'S DIMENSION 0 DO DO NOT MATCH.";
+    }
+}
