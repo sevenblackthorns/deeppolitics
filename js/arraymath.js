@@ -185,6 +185,15 @@ export function ArrayIndex(Array0, Indexes) {
     return  Array0View;
 }
 
+export function SimpleArraySum(Array0) {
+    let Array1 = Array0.flat(SimpleArrayRank(Array0));
+    let Sum = 0;
+    for (let i=0; i < Array1.length; i++) {
+        Sum += Array1[i];
+    }
+    return Sum;
+}
+
 export function SubArrayReshape(Array0, NewShape0) {
     let Shape0 = ArrayShape(Array0);
     let FlatArray0 = Array0;
@@ -193,7 +202,7 @@ export function SubArrayReshape(Array0, NewShape0) {
     if (NewShape0.length > 1) {
         let SubArrayShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length - 1, 1]]);
         for (let i=0; i < NewShape0[0]; i++) {
-            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * ArraySum(SubArrayShape0), (i + 1) * ArraySum(SubArrayShape0), 1]]), SubArrayShape0);
+            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * SimpleArraySum(SubArrayShape0), (i + 1) * SimpleArraySum(SubArrayShape0), 1]]), SubArrayShape0);
         }
     }
     else {
@@ -220,7 +229,7 @@ export function ArrayReshape(Array0, NewShape0) {
     if (NewShape0.length > 1) {
         let SubArrayShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length - 1, 1]]);
         for (let i=0; i < NewShape0[0]; i++) {
-            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * ArraySum(SubArrayShape0), (i + 1) * ArraySum(SubArrayShape0), 1]]), SubArrayShape0);
+            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * SimpleArraySum(SubArrayShape0), (i + 1) * SimpleArraySum(SubArrayShape0), 1]]), SubArrayShape0);
         }
     }
     else {
