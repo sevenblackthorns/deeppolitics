@@ -273,7 +273,7 @@ export function ArrayTranspose(Array0, Axes) {
     let Array0T = [];
     let Shape0 = ArrayShape(Array0);
     for (let i=0; i < Shape0[Axes[0]]; i++) {
-        for (let j=0; j < Shape0[Axes[1]], j++) {
+        for (let j=0; j < Shape0[Axes[1]]; j++) {
             
         }
     }
