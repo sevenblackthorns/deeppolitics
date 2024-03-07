@@ -122,8 +122,6 @@ export function ArrayOp(Array0, Array1, Op) {
     }
     let Rank0 = SimpleArrayRank(Array0);
     let Rank1 = SimpleArrayRank(Array1);
-    console.log(Rank0);
-    console.log(Rank1);
     let DepthDiff = Math.abs(Rank0 - Rank1);
     if (Rank0 < Rank1) {
         for (let i=0; i < DepthDiff; i++) {
