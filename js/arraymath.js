@@ -203,7 +203,6 @@ export function SubArrayReshape(Array0, NewShape0) {
         NewSize0 *= NewShape0[i];
     }
     let SubSize0 = NewSize0 / NewShape0[0];
-    console.log(Array0);
     if (NewShape0.length > 1) {
         let SubArrayShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length - 1, 1]]);
         let SubArrayShape0Mul = 1;
