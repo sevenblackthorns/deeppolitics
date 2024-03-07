@@ -237,7 +237,7 @@ export function ArrayReshape(Array0, NewShape0) {
             SubArrayShape0Mul *= SubArrayShape0[i];
         }
         for (let i=0; i < NewShape0[0]; i++) {
-            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * SubArrayShape0Mul, (i + 1) * (SubArrayShape0Mul - 1), 1]]), SubArrayShape0);
+            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * SubArrayShape0Mul, (i + 1) * (SubArrayShape0Mul) - 1, 1]]), SubArrayShape0);
         }
     }
     else {
