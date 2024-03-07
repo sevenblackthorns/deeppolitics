@@ -130,12 +130,9 @@ export function ArrayOp(Array0, Array1, Op) {
     }
     else {
         for (let i=0; i < DepthDiff; i++) {
-            console.log("E");
             Array1 = [Array1];
         }
     }
-    console.log(Array0);
-    console.log(Array1);
     let Shape0 = ArrayShape(Array0);
     let Shape1 = ArrayShape(Array1);
     if (Shape0[Shape0.length - 1] == 0) {
