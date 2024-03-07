@@ -272,3 +272,27 @@ export function ArrayDot(Array0, Array1, Axes) {
 export function ArrayTranspose(Array0, Axes) {
     
 }
+
+export function ArrayRandom(Shape0, Min, Max) {
+    let Size0 = 1;
+    let Array0 = []
+    for (let i=0; i < Shape0.length; i++) {
+        Size0 *= Shape0[i];
+    }
+    for (let i=0; i < Size0; i++) {
+        Array0.push(Math.random() * (Max - Min) + Min);
+    }
+    return ArrayReshape(Array0, Shape0);
+}
+
+export function ArrayFill(Shape0, Filler) {
+    let Size0 = 1;
+    let Array0 = []
+    for (let i=0; i < Shape0.length; i++) {
+        Size0 *= Shape0[i];
+    }
+    for (let i=0; i < Size0; i++) {
+        Array0.push(Filler);
+    }
+    return ArrayReshape(Array0, Shape0);
+}
