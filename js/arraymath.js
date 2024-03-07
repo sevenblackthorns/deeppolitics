@@ -254,22 +254,15 @@ export function ArrayDot(Array0, Array1, Axes) {
     }
     for (let i=0; i < Shape0[Axes[0]]; i++) {
         Array2.push([]);
-        console.log(i);
         for (let j=0; j < Shape1[Axes[1]]; j++) {
             let Sum = 0;
-            console.log(j);
             for (let k=0; k < Shape1[Axes[0]]; k++) {
-                console.log(k);
                 Index0[Axes[0]] = [i, i, 1];
                 Index1[Axes[0]] = [k, k, 1];
                 Index0[Axes[1]] = [k, k, 1];
                 Index1[Axes[1]] = [j, j, 1];
-                console.log(ArrayIndex(Array0, Index0));
-                console.log(ArrayIndex(Array1, Index1));
                 Sum += ArrayOp(ArrayIndex(Array0, Index0), ArrayIndex(Array1, Index1), "*");
-                console.log(Sum);
             }
-            console.log(Sum);
             Array2[i].push(Sum);
         }
     }
