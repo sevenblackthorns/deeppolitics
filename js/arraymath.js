@@ -202,7 +202,7 @@ export function SubArrayReshape(Array0, NewShape0) {
     if (NewShape0.length > 1) {
         let SubArrayShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length - 1, 1]]);
         let SubArrayShape0Mul = 1;
-        for (let i=0, i < SubArrayShape0.length; i++) {
+        for (let i=0; i < SubArrayShape0.length; i++) {
             SubArrayShape0Mul *= SubArrayShape0[i];
         }
         for (let i=0; i < NewShape0[0]; i++) {
@@ -233,7 +233,7 @@ export function ArrayReshape(Array0, NewShape0) {
     if (NewShape0.length > 1) {
         let SubArrayShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length - 1, 1]]);
         let SubArrayShape0Mul = 1;
-        for (let i=0, i < SubArrayShape0.length; i++) {
+        for (let i=0; i < SubArrayShape0.length; i++) {
             SubArrayShape0Mul *= SubArrayShape0[i];
         }
         for (let i=0; i < NewShape0[0]; i++) {
