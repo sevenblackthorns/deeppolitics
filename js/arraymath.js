@@ -248,10 +248,10 @@ export function ArrayDot(Array0, Array1, Axes) {
     let Array2 = [];
     for (let i=0; i < Shape0[0]; i++) {
         Array2.push([]);
-        for (let j=0; j < Shape1[0]; j++) {
+        for (let j=0; j < Shape1[1]; j++) {
             let Sum = 0;
-            for (let k=0; k < Shape1[1]; k++) {
-                Sum += ArrayOp(Array0[i][j], Array1[j][k], "*");
+            for (let k=0; k < Shape1[0]; k++) {
+                Sum += ArrayOp(Array0[i][k], Array1[k][j], "*");
             }
             Array2[i].push(Sum);
         }
