@@ -261,6 +261,10 @@ export function ArrayDot(Array0, Array1, Axes) {
                 Index1[Axes[0]] = [k, k, 1];
                 Index0[Axes[1]] = [k, k, 1];
                 Index1[Axes[1]] = [j, j, 1];
+                console.log(Index0);
+                console.log(Index1);
+                console.log(Shape0);
+                console.log(Shape1);
                 Sum += ArrayOp(ArrayIndex(Array0, Index0), ArrayIndex(Array1, Index1), "*").flat(Math.max(Shape0.length, Shape1.length))[0];
             }
             Array2[i].push(Sum);
