@@ -245,4 +245,16 @@ export function ArrayDot(Array0, Array1, Axes) {
     if (Shape0[1] != Shape1[0]) {
         throw "DEEP:4 - " + Shape0 + "'S DIMENSION 1 AND " + Shape1 + "'S DIMENSION 0 DO DO NOT MATCH.";
     }
+    let Array2 = [];
+    for (let i=0; i < Shape0[0]; i++) {
+        Array2.push([]);
+        for (let j=0; j < Shape1[0]; j++) {
+            let Sum = 0;
+            for (let k=0; k < Shape1[1]; k++) {
+                Sum += Array0[i][j] * Array1[j][k];
+            }
+            Array2[i].push(Sum);
+        }
+    }
+    return Array2;
 }
