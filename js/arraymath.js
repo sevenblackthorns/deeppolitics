@@ -201,8 +201,12 @@ export function SubArrayReshape(Array0, NewShape0) {
     console.log(Array0);
     if (NewShape0.length > 1) {
         let SubArrayShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length - 1, 1]]);
+        let SubArrayShape0Mul = 1;
+        for (let i=0, i < SubArrayShape0.length; i++) {
+            SubArrayShape0Mul *= SubArrayShape0[i];
+        }
         for (let i=0; i < NewShape0[0]; i++) {
-            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * SimpleArraySum(SubArrayShape0), (i + 1) * SimpleArraySum(SubArrayShape0), 1]]), SubArrayShape0);
+            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * SubArrayShape0Mul, (i + 1) * SubArrayShape0Mul, 1]]), SubArrayShape0);
         }
     }
     else {
@@ -228,8 +232,12 @@ export function ArrayReshape(Array0, NewShape0) {
     let NewArray0 = [];
     if (NewShape0.length > 1) {
         let SubArrayShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length - 1, 1]]);
+        let SubArrayShape0Mul = 1;
+        for (let i=0, i < SubArrayShape0.length; i++) {
+            SubArrayShape0Mul *= SubArrayShape0[i];
+        }
         for (let i=0; i < NewShape0[0]; i++) {
-            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * SimpleArraySum(SubArrayShape0), (i + 1) * SimpleArraySum(SubArrayShape0), 1]]), SubArrayShape0);
+            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * SubArrayShape0Mul, (i + 1) * SubArrayShape0Mul, 1]]), SubArrayShape0);
         }
     }
     else {
