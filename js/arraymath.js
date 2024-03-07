@@ -267,7 +267,7 @@ export function ArrayDot(Array0, Array1, Axes) {
                 Index01[Index01.length - 1] = [j, j, 1];
                 Index10[Index10.length - 1] = [j, j, 1];
                 Index11[Index11.length - 1] = [k, k, 1];
-                Sum += ArrayOp(ArrayIndex(ArrayIndex(Array0, Index00.concat(Index01)), ArrayIndex(ArrayIndex(Array1, Index10.concat(Index11)), "*");
+                Sum += ArrayOp(ArrayIndex(Array0, Index00.concat(Index01)), ArrayIndex(Array1, Index10.concat(Index11)), "*");
             }
             Array2[i].push(Sum);
         }
