@@ -263,7 +263,7 @@ export function ArrayDot(Array0, Array1, Axes) {
     }
     for (let i=0; i < Shape0[Axes[0]]; i++) {
         for (let j=0; j < Shape1[Axes[1]]; j++) {
-            let Sum = ArrayFill(ArrayIndex(ShapeT, [[Axes[1], ShapeT.length - 1, 1]]), 0);
+            let Sum = ArrayFill(ArrayIndex(ShapeT, [[Axes[1] -1, ShapeT.length - 1, 1]]), 0);
             for (let k=0; k < Shape1[Axes[0]]; k++) {
                 Index0[Axes[0]] = [i, i, 1];
                 Index1[Axes[0]] = [k, k, 1];
