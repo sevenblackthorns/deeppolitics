@@ -242,19 +242,39 @@ export function ArrayReshape(Array0, NewShape0) {
 export function ArrayDot(Array0, Array1, Axes) {
     let Shape0 = ArrayShape(Array0);
     let Shape1 = ArrayShape(Array1);
-    if (Shape0[1] != Shape1[0]) {
-        throw "DEEP:4 - " + Shape0 + "'S DIMENSION 1 AND " + Shape1 + "'S DIMENSION 0 DO DO NOT MATCH.";
+    if (Shape0[Axes[1]] != Shape1[Axes[0]]) {
+        throw "DEEP:4 - " + Shape0 + "'S DIMENSION " + Axes[1] + " AND " + Shape1 + "'S DIMENSION " + Axes[0] + " DO DO NOT MATCH.";
     }
     let Array2 = [];
-    for (let i=0; i < Shape0[0]; i++) {
+    let Index00 = [];
+    let Index10 = [];
+    let Index01 = [];
+    let Index11 = [];
+    for (let i=0; i < Axes[0]; i++) {
+        Index00.push([0, Shape0[i], 1]);
+        Index10.push([0, Shape1[i], 1]);
+    }
+    for (let i=0; i < Axes[1] - Axes[0]; i++) {
+        Index01.push([0, Shape0[i], 1]);
+        Index11.push([0, Shape1[i], 1]);
+    }
+    for (let i=0; i < Shape0[Axes[0]]; i++) {
         Array2.push([]);
-        for (let j=0; j < Shape1[1]; j++) {
+        for (let j=0; j < Shape1[Axes[1]]; j++) {
             let Sum = 0;
-            for (let k=0; k < Shape1[0]; k++) {
-                Sum += ArrayOp(Array0[i][k], Array1[k][j], "*");
+            for (let k=0; k < Shape1[Axes[0]]; k++) {
+                Index00[Index00.length - 1] = [i, i, 1];
+                Index01[Index01.length - 1] = [j, j, 1];
+                Index10[Index10.length - 1] = [j, j, 1];
+                Index11[Index11.length - 1] = [k, k, 1];
+                Sum += ArrayOp(ArrayIndex(ArrayIndex(Array0, Index00.concat(Index01)), ArrayIndex(ArrayIndex(Array1, Index10.concat(Index11)), "*");
             }
             Array2[i].push(Sum);
         }
     }
     return Array2;
+}
+
+export function ArrayTranspose(Array0, Axes) {
+    
 }
