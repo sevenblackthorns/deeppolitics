@@ -248,7 +248,7 @@ export function ArrayDot(Array0, Array1, Axes) {
     let Array2 = [];
     let Index0 = [];
     let Index1 = [];
-    for (let i=0; i < Axes[1]; i++) {
+    for (let i=0; i < Axes[1] + 1; i++) {
         Index0.push([0, Shape0[i], 1]);
         Index1.push([0, Shape1[i], 1]);
     }
@@ -257,10 +257,10 @@ export function ArrayDot(Array0, Array1, Axes) {
         for (let j=0; j < Shape1[Axes[1]]; j++) {
             let Sum = 0;
             for (let k=0; k < Shape1[Axes[0]]; k++) {
-                Index0[Axes[0] - 1] = [i, i, 1];
-                Index1[Axes[0] - 1] = [j, j, 1];
-                Index0[Axes[1] - 1] = [j, j, 1];
-                Index1[Axes[1] - 1] = [k, k, 1];
+                Index0[Axes[0]] = [i, i, 1];
+                Index1[Axes[0]] = [j, j, 1];
+                Index0[Axes[1]] = [j, j, 1];
+                Index1[Axes[1]] = [k, k, 1];
                 console.log(ArrayShape(ArrayIndex(Array0, Index0)));
                 console.log(ArrayShape(ArrayIndex(Array1, Index1)));
                 console.log(Index0);
