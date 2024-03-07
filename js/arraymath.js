@@ -193,7 +193,7 @@ export function SubArrayReshape(Array0, NewShape0) {
     if (NewShape0.length > 1) {
         let SubArrayShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length - 1, 1]]);
         for (let i=0; i < NewShape0[0]; i++) {
-            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * NewShape0[0], (i + 1) * NewShape0[0], 1]]), SubArrayShape0);
+            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * ArraySum(SubArrayShape0), (i + 1) * ArraySum(SubArrayShape0), 1]]), SubArrayShape0);
         }
     }
     else {
@@ -220,7 +220,7 @@ export function ArrayReshape(Array0, NewShape0) {
     if (NewShape0.length > 1) {
         let SubArrayShape0 = ArrayIndex(NewShape0, [[1, NewShape0.length - 1, 1]]);
         for (let i=0; i < NewShape0[0]; i++) {
-            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * NewShape0[0], (i + 1) * NewShape0[0], 1]]), SubArrayShape0);
+            NewArray0[i] = SubArrayReshape(ArrayIndex(FlatArray0, [[i * ArraySum(SubArrayShape0), (i + 1) * ArraySum(SubArrayShape0), 1]]), SubArrayShape0);
         }
     }
     else {
