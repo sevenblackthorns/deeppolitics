@@ -30,7 +30,7 @@ for (let Epoch=0; Epoch < 400; Epoch++) {
 }
 */
 
-let Layers = [new Dense(100, 50), new PReLU(0.01), new Dense(50, 10), new PReLU(0.01). new Softmax()];
+let Layers = [new Dense(100, 50), new PReLU(0.01), new Dense(50, 10), new PReLU(0.01), new Softmax()];
 let Data = [];
 for (let i=0; i < 100; i++) {
     Data.push([ArrayRandom([1, 100], -5, 5), ArrayRandom([1, 10], -10, 10)])
