@@ -30,12 +30,12 @@ for (let Epoch=0; Epoch < 400; Epoch++) {
 }
 */
 
-let Layers = [new Dense(1000, 100), new PReLU(0.01), new Dense(100, 10), new PReLU(0.01). new Softmax()];
+let Layers = [new Dense(500, 100), new PReLU(0.01), new Dense(100, 10), new PReLU(0.01). new Softmax()];
 let Data = [];
 for (let i=0; i < 100; i++) {
-    Data.push([ArrayRandom([1, 1000], -5, 5), ArrayRandom([1, 10], -10, 10)])
+    Data.push([ArrayRandom([1, 500], -5, 5), ArrayRandom([1, 10], -10, 10)])
 }
-for (let Epoch=0; Epoch < 400; Epoch++) {
+for (let Epoch=0; Epoch < 100; Epoch++) {
     let Loss = 0;
     for (let i=0; i < Data.length; i++) {
         let X = Data[i][0];
@@ -55,7 +55,7 @@ for (let Epoch=0; Epoch < 400; Epoch++) {
         console.log("GRADIENT:");
         PrintArray(Gradient);
         for (let Layer=Layers.length - 1; Layer >= 0; Layer--) {
-            Gradient = Layers[Layer].backward(Gradient, 0.05);
+            Gradient = Layers[Layer].backward(Gradient, 0.1);
         }
     }
     console.log(Loss / Data.length);
