@@ -1,12 +1,4 @@
-import {SimpleArrayRank, ArrayShape, ArrayOp, PrintArray, ArrayReshape, ArrayIndex, ArrayDot, ArrayRandom, ArrayFill, ArrayTranspose} from "./arraymath.js";
-let Array0 = ArrayRandom([200, 50, 10, 4], -1, 1);
+import {SimpleArrayRank, ArrayShape, ArrayOp, PrintArray, ArrayReshape, ArrayIndex, ArrayDot, ArrayRandom, ArrayFill, ArrayTranspose, ArrayWhere} from "./arraymath.js";
+let Array0 = ArrayRandom([5, 5], -10, 10);
 PrintArray(Array0);
-PrintArray(ArrayShape(Array0));
-let Array1 = ArrayRandom([200, 50, 10, 4], -1, 1);
-PrintArray(Array1);
-PrintArray(ArrayShape(Array1));
-let Array1T = ArrayTranspose(Array1);
-PrintArray(ArrayShape(Array1T));
-let Array2 = ArrayDot(Array0, Array1T);
-PrintArray(Array2);
-PrintArray(ArrayShape(Array2))
+PrintArray(ArrayWhere(ArrayOp(Array0, 0, ">")), Array0, ArrayFill([5, 5], 0));
