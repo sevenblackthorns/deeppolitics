@@ -14,7 +14,7 @@ for (let Epoch=0; Epoch < 100; Epoch++) {
         let Gradient = MSEd(X, Y);
         PrintArray(Gradient);
         for (let Layer=Layers.length - 1; Layer >= 0; Layer--) {
-            Gradient = Layers[Layer].backward(Gradient);
+            Gradient = Layers[Layer].backward(Gradient, 0.01);
         }
     }
 }
