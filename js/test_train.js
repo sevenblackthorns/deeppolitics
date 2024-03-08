@@ -9,10 +9,10 @@ for (let Epoch=0; Epoch < 100; Epoch++) {
         for (let Layer=0; Layer < Layers.length; Layer++) {
             X = Layers[Layer].forward(X);
         }
-        ArrayPrint(X, Y);
-        ArrayPrint(MSE(X, Y));
+        PrintArray(X, Y);
+        PrintArray(MSE(X, Y));
         let Gradient = MSEd(X, Y);
-        ArrayPrint(Gradient);
+        PrintArray(Gradient);
         for (let Layer=Layers.length - 1; Layer >= 0; Layer--) {
             Gradient = Layers[Layer].backward(Gradient);
         }
