@@ -253,14 +253,24 @@ export function ArrayDot(Array0, Array1) {
         }
         ShapeSum.push(Shape0[i]);
     }
-    let Sum = ArrayFill(ShapeSum, 0);
+    if (ShapeSum.length == 0) {
+        Sum = 0;
+    }
+    else {
+        let Sum = ArrayFill(ShapeSum, 0);
+    }
     for (let i=0; i < Shape0[0]; i++) {
         Array2.push([]);
         for (let j=0; j < Shape1[1]; j++) {
             Array2[i].push([]);
             Sum = ArrayOp(Sum, 0, "*");
             for (let k=0; k < Shape1[0]; k++) {
-                Sum = ArrayOp(Sum, ArrayOp(Array0[i][k], Array1[k][j], "*"), "+");
+                if (ShapeSum.lengh == 0) {
+                    Sum += ArrayOp(Array0[i][k], Array1[k][j], "*");
+                }
+                else {
+                    Sum = ArrayOp(Sum, ArrayOp(Array0[i][k], Array1[k][j], "*"), "+");
+                }
             }
             Array2[i][j] = Sum;
         }
