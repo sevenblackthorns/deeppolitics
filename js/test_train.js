@@ -38,6 +38,8 @@ for (let i=0; i < 100; i++) {
 for (let Epoch=0; Epoch < 400; Epoch++) {
     let Loss = 0;
     for (let i=0; i < Data.length; i++) {
+        let X = Data[i][0];
+        let Y = Data[i][1];
         for (let Layer=0; Layer < Layers.length; Layer++) {
             X = Layers[Layer].forward(X);
         }
