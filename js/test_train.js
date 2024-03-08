@@ -16,7 +16,7 @@ for (let Epoch=0; Epoch < 100; Epoch++) {
         PrintArray(Y);
         console.log("MSE:");
         let Err = MSE(X, Y);
-        PrintArray(Err);
+        console.log(Err);
         Loss = ArrayOp(Loss, Err, "+");
         let Gradient = MSEd(X, Y);
         console.log("GRADIENT:");
