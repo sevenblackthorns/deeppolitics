@@ -262,7 +262,14 @@ export function ArrayDot(Array0, Array1) {
 }
 
 export function ArrayTranspose(Array0) {
-    
+    let Shape0 = ArrayShape(Array0);
+    let Array0T = ArrayFill([Shape0[1], Shape0[0]], 0);
+    for (let i=0; i < Shape0[0]; i++) {
+        for (let j=0; j < Shape0[1], j++) {
+            Array0T[j][i] = Array0[i][j];
+        }
+    }
+    return Array0T;
 }
 
 export function ArrayRandom(Shape0, Min, Max) {
