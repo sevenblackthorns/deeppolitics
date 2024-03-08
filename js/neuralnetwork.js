@@ -2,8 +2,8 @@ import {SimpleArrayRank, ArrayShape, ArrayOp, PrintArray, ArrayReshape, ArrayInd
 
 export class Dense {
     constructor(InputSize, OutputSize) {
-        this.Weights = ArrayRandom([InputSize, OutputSize], -1, 1);
-        this.Biases = ArrayRandom([OutputSize], -1, 3);
+        this.Weights = ArrayRandom([InputSize, OutputSize], -0.5, 0.5);
+        this.Biases = ArrayRandom([OutputSize], -0.5, 0.5);
         this.Inputs = [];
     }
 
