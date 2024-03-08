@@ -330,7 +330,6 @@ export function ArrayWhere(BoolArray, TrueArray, FalseArray) {
     }
     for (let i=0; i < Array0.length; i++) {
         if (Array0[i] == true) {
-            console.log(TrueArrayF[i], i);
             Array0[i] = TrueArrayF[i];
         }
         else {
