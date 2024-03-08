@@ -1,8 +1,8 @@
 import {SimpleArrayRank, ArrayShape, ArrayOp, PrintArray, ArrayReshape, ArrayIndex, ArrayDot, ArrayRandom} from "./arraymath.js";
-let Array0 = ArrayRandom([2, 6, 3, 3, 7, 1], -1, 1);
+let Array0 = ArrayRandom([100, 5, 8, 10], -1, 1);
 PrintArray(Array0);
 PrintArray(ArrayShape(Array0));
-let Array1 = ArrayRandom([2, 7, 3, 3, 5, 1], -1, 1);
+let Array1 = ArrayRandom([100, 5, 8, 10], -1, 1);
 PrintArray(Array1);
 PrintArray(ArrayShape(Array1));
 PrintArray(ArrayDot(Array0, Array1, [1, 4]));
