@@ -40,7 +40,7 @@ export class PReLU {
 export function MSE(Outputs, Targets) {
     let SE = ArrayOp(ArrayOp(Outputs, Targets, "-"), 2, "**");
     let SSE = [0];
-    for (let i=0; i < SE.length, i++) {
+    for (let i=0; i < SE.length; i++) {
         SSE[0] = ArrayOp(SSE[0], SE[i], "+"); 
     }
     return ArrayOp(SSE, Outputs.length, "/");
