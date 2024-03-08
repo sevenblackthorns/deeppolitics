@@ -9,7 +9,7 @@ export class Dense {
 
     forward(Inputs) {
         this.Inputs = Inputs;
-        return ArrayOp(ArrayDot(Inputs, this.Weights), Biases, "+");
+        return ArrayOp(ArrayDot(Inputs, this.Weights), this.Biases, "+");
     }
 
     backward(Gradient, LearningRate) {
