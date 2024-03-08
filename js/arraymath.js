@@ -314,8 +314,20 @@ export function ArrayFill(Shape0, Filler) {
 export function ArrayWhere(BoolArray, TrueArray, FalseArray) {
     let Rank0 = SimpleArrayRank(BoolArray);
     let Array0 = BoolArray.flat(Rank0);
-    let TrueArrayF = TrueArray.flat(Rank0);
-    let FalseArrayF = FalseArray.flat(Rank0);
+    let TrueArrayF = [];
+    let FalseArrayF = [];
+    if (Array.isArray(TrueArray)) {
+        TrueArrayF = TrueArray.flat(Rank0);
+    }
+    else {
+        TrueArrayF = ArrayFill([Array0.length], TrueArray);
+    }
+    if (Array.isArray(FalseArray)) {
+        FalseArrayF = FalseArray.flat(Rank0);
+    }
+    else {
+        FalseArrayF = ArrayFill([Array0.length], FalseArray);
+    }
     for (let i=0; i < Array0.length; i++) {
         if (Array0[i] == true) {
             Array0[i] = TrueArrayF[i];
