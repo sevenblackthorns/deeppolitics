@@ -33,7 +33,7 @@ export class PReLU {
     }
 
     backward(Gradient, _LearningRate) {
-        return ArrayWhere(ArrayOp(Inputs, 0, "<"), ArrayOp(Gradient, this.Param, "*"), Gradient);
+        return ArrayWhere(ArrayOp(this.Inputs, 0, "<"), ArrayOp(Gradient, this.Param, "*"), Gradient);
     }
 }
 
