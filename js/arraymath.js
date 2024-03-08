@@ -254,7 +254,7 @@ export function ArrayDot(Array0, Array1) {
         ShapeSum.push(Shape0[i]);
     }
     if (ShapeSum.length == 0) {
-        Sum = 0;
+        let Sum = 0;
     }
     else {
         let Sum = ArrayFill(ShapeSum, 0);
