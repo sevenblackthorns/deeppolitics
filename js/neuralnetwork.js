@@ -46,7 +46,7 @@ export class Softmax {
     forward(Inputs) {
         this.Inputs = Inputs;
         this.EPowX = ArrayOp(Math.E, Inputs, "**")
-        return ArrayOp(EPowX, ArraySum(Inputs, 1), "/");
+        return ArrayOp(this.EPowX, ArraySum(this.EPowX, 1), "/");
     }
 
     backward(Gradient, _LearningRate) {
