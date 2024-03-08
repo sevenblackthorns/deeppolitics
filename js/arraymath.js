@@ -243,7 +243,7 @@ export function ArrayDot(Array0, Array1) {
     let Shape0 = ArrayShape(Array0);
     let Shape1 = ArrayShape(Array1);
     if (Shape0[1] != Shape1[0]) {
-        throw "DEEP:4 - SHAPES " + Shape0 + " AND " + Shape1 + " DO NOT HAVE EQUAL DIMENSIONS 1 AND 0.":
+        throw "DEEP:4 - SHAPES " + Shape0 + " AND " + Shape1 + " DO NOT HAVE EQUAL DIMENSIONS 1 AND 0.";
     }
     let Array2 = [];
     let Sum = ArrayFill([Shape0[0], Shape1[1]], 0);
