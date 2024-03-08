@@ -21,6 +21,22 @@ export class Dense {
     }
 }
 
+export class PReLU {
+    constructor(Param) {
+        this.Inputs = [];
+        this.Param = Param;
+    }
+
+    forward(Inputs) {
+        this.Inputs = Inputs;
+        return ArrayWhere(ArrayOp(Inputs, 0, "<"), ArrayOp(Inputs, this.Param, "*"), Inputs);
+    }
+
+    backward(Gradient, _LearningRate) {
+        return ArrayWhere(ArrayOp(Inputs, 0, "<"), ArrayOp(Gradient, this.Param, "*"), Gradient);
+    }
+}
+
 export function MSE(Outputs, Targets) {
     let SE = ArrayOp(ArrayOp(Outputs, Targets, "-"), 2, "**");
     let SSE = [0];
