@@ -1,5 +1,5 @@
 import {SimpleArrayRank, ArrayShape, ArrayOp, PrintArray, ArrayReshape, ArrayIndex, ArrayDot, ArrayRandom, ArrayFill, ArrayTranspose, ArrayWhere} from "./arraymath.js";
-import {Dense, PReLU, MSE, MSEd} from "./neuralnetwork.js";
+import {Dense, PReLU, MSE, MSEd, Softmax} from "./neuralnetwork.js";
 /*
 let Layers = [new Dense(4, 2), new PReLU(0.01), new Dense(2, 2), new PReLU(0.01)];
 let Data = [[[0, 1, 0, 1], [0, 1]], [[0, 1, 1, 0], [1, 0]], [[1, 0, 0, 1], [1, 0]], [[1, 0, 1, 0], [1, 0]]];
@@ -30,7 +30,7 @@ for (let Epoch=0; Epoch < 400; Epoch++) {
 }
 */
 
-let Layers = [new Dense(1000, 100), new PReLU(0.01), new Dense(100, 10), new PReLU(0.01)];
+let Layers = [new Dense(1000, 100), new PReLU(0.01), new Dense(100, 10), new PReLU(0.01). new Softmax()];
 let Data = [];
 for (let i=0; i < 100; i++) {
     Data.push([ArrayRandom([1, 1000], -5, 5), ArrayRandom([1, 10], -10, 10)])
