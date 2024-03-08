@@ -37,6 +37,23 @@ export class PReLU {
     }
 }
 
+export class Softmax {
+    constructor() {
+        this.Inputs = [];
+        this.EPowX = [];
+    }
+
+    forward(Inputs) {
+        this.Inputs = Inputs;
+        this.EPowX = ArrayOp(Math.E, Inputs, "**")
+        return ArrayOp(EPowX, ArraySum(Inputs, 1), "/");
+    }
+
+    backward(Gradient, _LearningRate) {
+        return ArrayOp(Gradient, ArrayOp(1, Gradient, "-"), "*");
+    }
+}
+
 export function MSE(Outputs, Targets) {
     let SE = ArrayOp(ArrayOp(Outputs, Targets, "-"), 2, "**");
     let SSE = 0;
