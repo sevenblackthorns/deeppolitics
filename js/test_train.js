@@ -25,5 +25,5 @@ for (let Epoch=0; Epoch < 100; Epoch++) {
             Gradient = Layers[Layer].backward(Gradient, 0.01);
         }
     }
-    console.log(Loss);
+    console.log(Loss / Data.length);
 }
