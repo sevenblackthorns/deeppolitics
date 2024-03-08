@@ -338,3 +338,20 @@ export function ArrayWhere(BoolArray, TrueArray, FalseArray) {
     }
     return ArrayReshape(Array0, ArrayShape(BoolArray));
 }
+
+export function ArraySum(Array0, Axis) {
+    if (Axis == 0) {
+        let Sum = 0;
+        for (let i=0; i < Array0.length; i++) {
+            Sum = ArrayOp(Sum, Array0[i], "+");
+        }
+        return Sum;
+    }
+    else {
+        let Sum = 0;
+        for (let i=0; i < Array0.length; i++) {
+            Sum = ArrayOp(Sum, ArraySum(Array0[i], Axis - 1), "+");
+        }
+        return Sum;
+    }
+}
