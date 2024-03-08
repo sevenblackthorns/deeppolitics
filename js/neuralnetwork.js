@@ -30,3 +30,7 @@ export function MSE(Outputs, Targets) {
     return ArrayOp(SSE, Outputs.length, "/");
 }
 
+export function MSEd(Outputs, Targets) {
+    let SE = ArrayOp(ArrayOp(Outputs, Targets, "-"), 2, "*");
+    return ArrayOp(SE, Outputs.length, "/");
+}
