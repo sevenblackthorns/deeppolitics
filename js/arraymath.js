@@ -310,3 +310,19 @@ export function ArrayFill(Shape0, Filler) {
     }
     return ArrayReshape(Array0, Shape0);
 }
+
+export function ArrayWhere(BoolArray, TrueArray, FalseArray) {
+    let Rank0 = SimpleArrayRank(BoolArray);
+    let Array0 = BoolArray.flat(Rank0);
+    let TrueArrayF = TrueArray.flat(Rank0);
+    let FalseArrayF = FalseArray.flat(Rank0);
+    for (let i=0; i < Array0.length; i++) {
+        if (Array0[i] == true) {
+            Array0[i] = TrueArrayF[i];
+        }
+        else {
+            Array0[i] = FalseArrayF[i];
+        }
+    }
+    return ArrayReshape(Array0, ArrayShape(BoolArray));
+}
