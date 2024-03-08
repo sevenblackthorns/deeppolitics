@@ -1,5 +1,5 @@
 import {SimpleArrayRank, ArrayShape, ArrayOp, PrintArray, ArrayReshape, ArrayIndex, ArrayDot, ArrayRandom, ArrayFill, ArrayTranspose, ArrayWhere} from "./arraymath.js";
-import {Dense, PReLU, MSE, MSEd} from "neuralnetwork.js"
+import {Dense, PReLU, MSE, MSEd} from "./neuralnetwork.js"
 let Layers = [Dense(4, 2), PReLU(0.01), Dense(2, 2), PReLU(0.01)];
 let Data = [[[0, 1, 0, 1], [0, 1]], [[0, 1, 1, 0], [1, 0]], [[1, 0, 0, 1], [1, 0]], [[1, 0, 1, 0], [1, 0]]];
 for (let Epoch=0; Epoch < 100; Epoch++) {
