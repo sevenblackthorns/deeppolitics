@@ -30,12 +30,12 @@ for (let Epoch=0; Epoch < 400; Epoch++) {
 }
 */
 
-let Layers = [new Dense(500, 100), new PReLU(0.01), new Dense(100, 10), new PReLU(0.01). new Softmax()];
+let Layers = [new Dense(100, 50), new PReLU(0.01), new Dense(50, 10), new PReLU(0.01). new Softmax()];
 let Data = [];
 for (let i=0; i < 100; i++) {
-    Data.push([ArrayRandom([1, 500], -5, 5), ArrayRandom([1, 10], -10, 10)])
+    Data.push([ArrayRandom([1, 100], -5, 5), ArrayRandom([1, 10], -10, 10)])
 }
-for (let Epoch=0; Epoch < 100; Epoch++) {
+for (let Epoch=0; Epoch < 10; Epoch++) {
     let Loss = 0;
     for (let i=0; i < Data.length; i++) {
         let X = Data[i][0];
