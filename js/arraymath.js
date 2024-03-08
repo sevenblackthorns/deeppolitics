@@ -246,7 +246,14 @@ export function ArrayDot(Array0, Array1) {
         throw "DEEP:4 - SHAPES " + Shape0 + " AND " + Shape1 + " DO NOT HAVE EQUAL DIMENSIONS 1 AND 0.";
     }
     let Array2 = [];
-    let Sum = ArrayFill([Shape0[0], Shape1[1]], 0);
+    let ShapeSum = [];
+    for (let i=2; i < Shape0.length; i++) {
+        if (Shape0[i] != Shape1[i]) {
+            throw "DEEP:1 - SHAPES " + Shape0 + " AND " + Shape1 + " ARE NOT COMPATIBLE.";
+        }
+        ShapeSum.push(Shape0[i]);
+    }
+    let Sum = ArrayFill(ShapeSum, 0);
     for (let i=0; i < Shape0[0]; i++) {
         Array2.push([]);
         for (let j=0; j < Shape1[1]; j++) {
