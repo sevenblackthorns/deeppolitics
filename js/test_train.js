@@ -1,4 +1,4 @@
-import {SimpleArrayRank, ArrayShape, ArrayOp, PrintArray, ArrayReshape, ArrayIndex, ArrayDot, ArrayRandom, ArrayTranspose} from "./arraymath.js";
+import {SimpleArrayRank, ArrayShape, ArrayOp, PrintArray, ArrayReshape, ArrayIndex, ArrayDot, ArrayRandom, ArrayFill, ArrayTranspose} from "./arraymath.js";
 let Array0 = ArrayRandom([100, 5, 8, 10], -1, 1);
 PrintArray(Array0);
 PrintArray(ArrayShape(Array0));
