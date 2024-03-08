@@ -39,9 +39,10 @@ export class PReLU {
 
 export function MSE(Outputs, Targets) {
     let SE = ArrayOp(ArrayOp(Outputs, Targets, "-"), 2, "**");
-    let SSE = [0];
-    for (let i=0; i < SE.length; i++) {
-        SSE[0] = ArrayOp(SSE[0], SE[i], "+"); 
+    let SSE = 0;
+    let SEFlat = SE.flat();
+    for (let i=0; i < SEFlat.length; i++) {
+        SSE += SEFlat[i];
     }
     return ArrayOp(SSE, Outputs.length, "/");
 }
