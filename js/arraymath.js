@@ -253,10 +253,8 @@ export function ArrayDot(Array0, Array1) {
         }
         ShapeSum.push(Shape0[i]);
     }
-    if (ShapeSum.length == 0) {
-        let Sum = 0;
-    }
-    else {
+    let Sum = 0;
+    if (ShapeSum.length != 0) {
         let Sum = ArrayFill(ShapeSum, 0);
     }
     for (let i=0; i < Shape0[0]; i++) {
