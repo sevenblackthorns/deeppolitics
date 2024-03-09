@@ -60,7 +60,7 @@ export class Softmax {
         let Size = Gradient[0].length;
         for (let i=0; i < Size; i++) {
             ArrayIdentity.push([]);
-            ArrayTiled.push(this.Output);
+            ArrayTiled.push(this.Outputs);
             for (let j=0; j < Size; j++) {
                 if (j == i) {
                     ArrayIdentity[i][j] = 1;
