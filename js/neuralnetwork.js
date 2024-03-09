@@ -47,9 +47,7 @@ export class Softmax {
     forward(Inputs) {
         this.Inputs = Inputs;
         this.EPowX = ArrayOp(Math.E, Inputs, "**");
-        console.log(ArrayShape(this.EPowX));
         this.Outputs = ArrayOp(this.EPowX, ArraySum(this.EPowX, 1), "/");
-        console.log(ArrayShape(this.Outputs));
         return this.Outputs;
     }
 
@@ -57,7 +55,7 @@ export class Softmax {
         let ArrayIdentity = [];
         let ArrayTiled = [];
         // let Size = ArraySum(ArrayShape(Gradient), 0);
-        let Size = Gradient[0].length;
+        let Size = Gradient.length;
         for (let i=0; i < Size; i++) {
             ArrayIdentity.push([]);
             ArrayTiled.push(Gradient);
