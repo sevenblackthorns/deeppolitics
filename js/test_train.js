@@ -6,8 +6,8 @@ let Data = [[[0, 1, 0, 1], [0, 1]], [[0, 1, 1, 0], [1, 0]], [[1, 0, 0, 1], [1, 0
 for (let Epoch=0; Epoch < 400; Epoch++) {
     let Loss = 0;
     for (let i=0; i < Data.length; i++) {
-        let X = ArrayReshape(Data[i][0], [1, 4]);
-        let Y = ArrayReshape(Data[i][1], [1, 2]);
+        let X = ArrayReshape(Data[i][0], [4]);
+        let Y = ArrayReshape(Data[i][1], [2]);
         for (let Layer=0; Layer < Layers.length; Layer++) {
             X = Layers[Layer].forward(X);
         }
