@@ -9,7 +9,6 @@ export class Dense {
 
     forward(Inputs) {
         this.Inputs = Inputs;
-        console.log(ArrayShape(ArrayOp(ArrayDot(Inputs, this.Weights), this.Biases, "+")))
         return ArrayOp(ArrayDot(Inputs, this.Weights), this.Biases, "+");
     }
 
@@ -47,7 +46,6 @@ export class Softmax {
 
     forward(Inputs) {
         this.Inputs = Inputs;
-        console.log(Inputs);
         this.EPowX = ArrayOp(Math.E, Inputs, "**");
         this.Outputs = ArrayOp(this.EPowX, ArraySum(this.EPowX, 1), "/");
         return this.Outputs;
