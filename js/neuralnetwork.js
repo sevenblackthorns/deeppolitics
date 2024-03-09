@@ -69,7 +69,41 @@ export class Softmax {
             }
         }
         ArrayTiled = ArrayReshape(ArrayTiled, ArrayShape(ArrayIdentity));
-        return ArrayDot(Gradient, ArrayOp(ArrayTiled, ArrayOp(ArrayIdentity, ArrayTiled, "-"), "*"))
+        return ArrayDot(Gradient, ArrayOp(ArrayTiled, ArrayOp(ArrayIdentity, ArrayTiled, "-"), "*"));
+    }
+}
+
+export class Norm {
+    constructor() {
+        this.Inputs = [];
+        this.Outputs = [];
+    }
+
+    forward(Inputs) {
+        this.Inputs = Inputs;
+        this.Mu = ArrayOp(ArraySum(Inputs, 1), Inputs[0].length, "/");
+        this.X = ArrayOp(Inputs, this.Mu, "-");
+        this.Variance = ArrayOp(ArraySum(ArrayOp(Inputs, 2, "**"), 1), Inputs[0].length, "/");
+        this.Outputs = ArrayOp(this.X, this.Variance, "/");
+        return this.Outputs;
+    }
+
+    backward(Gradient, _LearningRate) {
+        let ArrayIdentity = [];
+        let Size = Gradient[0].length;
+        for (let i=0; i < Size; i++) {
+            ArrayIdentity.push([]);
+            for (let j=0; j < Size; j++) {
+                if (j == i) {
+                    ArrayIdentity[i][j] = 1;
+                }
+                else {
+                    ArrayIdentity[i][j] = 0;
+                }
+            }
+        }
+        return ArrayOp(ArrayOp(ArrayOp(ArrayOp(Size, 3, "**"), Gradient, "*"), -1, "*"), ArrayOp(ArrayOp(ArrayOp(Size, 1, "-"), 2, "**"), this.Inputs, "*"), "/");
+        // return ArrayOp(ArrayOp(ArrayOp(ArrayOp(Size, ArrayIdentity, "*"), 1, "-"), ArrayOp(Size, this.Variance, "*"), "/"), ArrayDot(, ), "-");
     }
 }
 
