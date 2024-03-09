@@ -47,7 +47,9 @@ export class Softmax {
     forward(Inputs) {
         this.Inputs = Inputs;
         this.EPowX = ArrayOp(Math.E, Inputs, "**");
+        console.log(ArrayShape(this.EPowX));
         this.Outputs = ArrayOp(this.EPowX, ArraySum(this.EPowX, 1), "/");
+        console.log(ArrayShape(this.Outputs));
         return this.Outputs;
     }
 
