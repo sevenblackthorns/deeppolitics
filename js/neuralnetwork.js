@@ -41,16 +41,18 @@ export class Softmax {
     constructor() {
         this.Inputs = [];
         this.EPowX = [];
+        this.Outputs = [];
     }
 
     forward(Inputs) {
         this.Inputs = Inputs;
-        this.EPowX = ArrayOp(Math.E, Inputs, "**")
-        return ArrayOp(this.EPowX, ArraySum(this.EPowX, 1), "/");
+        this.EPowX = ArrayOp(Math.E, Inputs, "**");
+        this.Outputs = ArrayOp(this.EPowX, ArraySum(this.EPowX, 1), "/");
+        return this.Outputs;
     }
 
     backward(Gradient, _LearningRate) {
-        return ArrayOp(Gradient, ArrayOp(1, Gradient, "-"), "*");
+        return ArrayDot(ArrayOp(this.Outputs, ArrayOp(1, this.Outputs, "-"), "*"), Gradient);
     }
 }
 
