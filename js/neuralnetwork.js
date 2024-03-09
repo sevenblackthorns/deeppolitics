@@ -55,7 +55,7 @@ export class Softmax {
         let ArrayIdentity = [];
         let ArrayTiled = [];
         // let Size = ArraySum(ArrayShape(Gradient), 0);
-        let Size = Gradient.length;
+        let Size = Gradient[0].length;
         for (let i=0; i < Size; i++) {
             ArrayIdentity.push([]);
             ArrayTiled.push(Gradient);
