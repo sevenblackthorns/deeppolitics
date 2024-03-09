@@ -68,6 +68,9 @@ export class Softmax {
                 }
             }
         }
+        PrintArray(ArrayShape(ArrayTiled));
+        PrintArray(ArrayShape(ArrayIdentity));
+        PrintArray(ArrayShape(Gradient));
         return ArrayDot(Gradient, ArrayOp(ArrayTiled, ArrayOp(ArrayIdentity, ArrayTiled, "-"), "*"))
     }
 }
