@@ -52,7 +52,7 @@ export class Softmax {
     }
 
     backward(Gradient, _LearningRate) {
-        return ArrayDot(ArrayOp(this.Outputs, ArrayOp(1, ArrayTranspose(this.Outputs), "-"), "*"), Gradient);
+        return ArrayDot(ArrayOp(ArrayTranspose(this.Outputs), ArrayOp(1, this.Outputs, "-"), "*"), Gradient);
     }
 }
 
