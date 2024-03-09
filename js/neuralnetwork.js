@@ -104,7 +104,7 @@ export class Norm {
         }
         let Mean = ArrayOp(ArraySum(Gradient, 1), Size, "/");
         let GSubMean = ArrayOp(Gradient, Mean, "-");
-        PrintArray(ArrayShape(ArrayOp(ArrayOp(ArrayOp(ArrayOp(Size, ArrayIdentity, "*"), 1, "-"), ArrayOp(Size, this.Variance, "*"), "/"), ArrayOp(ArrayDot(GSubMean, ArrayTranspose(GSubMean)), ArrayOp(Size, ArrayOp(this.Variance, 3, "**"), "*"), "/"), "-")}));
+        PrintArray(ArrayShape(ArrayOp(ArrayOp(ArrayOp(ArrayOp(Size, ArrayIdentity, "*"), 1, "-"), ArrayOp(Size, this.Variance, "*"), "/"), ArrayOp(ArrayDot(GSubMean, ArrayTranspose(GSubMean)), ArrayOp(Size, ArrayOp(this.Variance, 3, "**"), "*"), "/"), "-")})));
         return ArrayOp(ArrayOp(ArrayOp(ArrayOp(Size, ArrayIdentity, "*"), 1, "-"), ArrayOp(Size, this.Variance, "*"), "/"), ArrayOp(ArrayDot(GSubMean, ArrayTranspose(GSubMean)), ArrayOp(Size, ArrayOp(this.Variance, 3, "**"), "*"), "/"), "-");
     }
 }
