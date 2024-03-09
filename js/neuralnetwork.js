@@ -102,8 +102,9 @@ export class Norm {
                 }
             }
         }
-        return ArrayOp(ArrayOp(ArrayOp(ArrayOp(Size, 3, "**"), Gradient, "*"), -1, "*"), ArrayOp(ArrayOp(ArrayOp(Size, ArrayIdentity, "-"), 2, "**"), this.Inputs, "*"), "/");
-        // return ArrayOp(ArrayOp(ArrayOp(ArrayOp(Size, ArrayIdentity, "*"), 1, "-"), ArrayOp(Size, this.Variance, "*"), "/"), ArrayDot(, ), "-");
+        let Mean = ArrayOp(ArraySum(Gradient, 1), Size, "/");
+        let GSubMean = ArrayOp(Gradient, Mean, "-");
+        return ArrayOp(ArrayOp(ArrayOp(ArrayOp(Size, ArrayIdentity, "*"), 1, "-"), ArrayOp(Size, this.Variance, "*"), "/"), ArrayOp(ArrayDot(GSubMean, ArrayTranspose(GSubMean)), ArrayOp(Size, ArrayOp(this.Variance, 3, "**"), "*"), "/"), "-");
     }
 }
 
