@@ -9,6 +9,7 @@ export class Dense {
 
     forward(Inputs) {
         this.Inputs = Inputs;
+        console.log(ArrayShape(ArrayOp(ArrayDot(Inputs, this.Weights), this.Biases, "+")))
         return ArrayOp(ArrayDot(Inputs, this.Weights), this.Biases, "+");
     }
 
