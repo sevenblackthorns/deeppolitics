@@ -73,7 +73,7 @@ export class Softmax {
         return ArrayDot(Gradient, ArrayOp(ArrayTiled, ArrayOp(ArrayIdentity, ArrayTiled, "-"), "*"));
         */
         let ArrayIdentity = [];
-        let Size = Gradient[1].length;
+        let Size = Gradient[0].length;
         for (let i=0; i < Size; i++) {
             ArrayIdentity.push([]);
             for (let j=0; j < Size; j++) {
