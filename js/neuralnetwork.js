@@ -128,3 +128,7 @@ export function MSEd(Outputs, Targets) {
     let SE = ArrayOp(ArrayOp(Outputs, Targets, "-"), 2, "*");
     return ArrayOp(SE, Outputs.length, "/");
 }
+
+export function CrossEntropyLoss(Outputs, Targets) {
+    return ArrayOp(Outputs, Targets, "-");
+}
