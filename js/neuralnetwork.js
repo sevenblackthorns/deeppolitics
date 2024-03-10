@@ -98,13 +98,17 @@ export class Norm {
                     ArrayIdentity[i][j] = 1;
                 }
                 else {
-                    ArrayIdentity[i][j] = 0;
+                    ArrayIdentity[i][j] = -1;
                 }
             }
         }
+        /*
         let Mean = ArrayOp(ArraySum(Gradient, 1), Size, "/");
         let GSubMean = ArrayOp(Gradient, Mean, "-");
         return ArrayOp(ArrayOp(ArrayOp(ArrayOp(Size, ArrayIdentity, "*"), 1, "-"), ArrayOp(Size, this.Variance, "*"), "/"), ArrayOp(ArrayDot(GSubMean, ArrayTranspose(GSubMean)), ArrayOp(Size, ArrayOp(this.Variance, 3, "**"), "*"), "/"), "-");
+        */
+        // return ArrayOp(ArrayOp(Size ** 2, Gradient, "*"), ArrayOp(ArrayOp(Size, ArrayIdentity, "-"), ArrayOp(this.Inputs, 2, "**"), "*"), "/");
+        return ArrayDot(ArrayOp(ArrayOp(ArrayOp(Size ** 2, ArrayOp(ArrayIdentity, ArrayOp(this.Inputs, 2, "**"), "*")), ArrayOp(Size - 1, ArrayOp(ArraySum(ArrayOp(this.Inputs, 2, "**"), 1), 2, "**")), "/"), -1, "*"), Gradient);
     }
 }
 
