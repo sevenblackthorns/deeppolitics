@@ -102,7 +102,7 @@ export class Norm {
                 }
             }
         }
-        return ArrayDot(Gradient, ArrayOp(ArrayOp(ArrayOp(Size ** 2, ArrayOp(ArrayIdentity, ArrayOp(this.Inputs, 2, "**"), "*"), "*"), ArrayOp(Size - 1, ArrayOp(ArraySum(ArrayOp(this.Inputs, 2, "**"), 1), 2, "**"), "*"), "/"), 1, "*"));
+        return ArrayDot(Gradient, ArrayOp(ArrayOp(ArrayOp(Size ** 2, ArrayOp(ArrayIdentity, ArrayOp(this.Inputs, 2, "**"), "*"), "*"), ArrayOp(Size - 1, ArrayOp(ArraySum(ArrayOp(this.Inputs, 2, "**"), 1), 2, "**"), "*"), "/"), -1, "*"));
     }
 }
 
