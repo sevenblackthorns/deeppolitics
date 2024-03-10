@@ -52,6 +52,7 @@ export class Softmax {
     }
 
     backward(Gradient, _LearningRate) {
+        /*
         let ArrayIdentity = [];
         let ArrayTiled = [];
         // let Size = ArraySum(ArrayShape(Gradient), 0);
@@ -70,6 +71,21 @@ export class Softmax {
         }
         ArrayTiled = ArrayReshape(ArrayTiled, ArrayShape(ArrayIdentity));
         return ArrayDot(Gradient, ArrayOp(ArrayTiled, ArrayOp(ArrayIdentity, ArrayTiled, "-"), "*"));
+        */
+        let ArrayIdentity = [];
+        let Size = Gradient[1].length;
+        for (let i=0; i < Size; i++) {
+            ArrayIdentity.push([]);
+            for (let j=0; j < Size; j++) {
+                if (j == i) {
+                    ArrayIdentity[i][j] = 0;
+                }
+                else {
+                    ArrayIdentity[i][j] = 1;
+                }
+            }
+        }
+        return ArrayDot(Gradient, ArrayOp(ArrayOp(ArrayOp(Size, this.EPowX, "*"), ArrayOp(this.EPowX, ArrayIdentity, "*"), "*"), ArrayOp(ArraySum(this.EPowX, 1), 2, "**"), "/"));
     }
 }
 
@@ -110,7 +126,8 @@ export class Norm {
         return ArrayOp(ArrayOp(ArrayOp(ArrayOp(Size, ArrayIdentity, "*"), 1, "-"), ArrayOp(ArrayOp(Size, Variance, "*"), 10 ** -100, "+"), "/"), ArrayOp(ArrayDot(GSubM, ArrayTranspose(GSubM)), ArrayOp(ArrayOp(Size, ArrayOp(Variance, 3, "**"), "*"), 10 ** -100, "+"), "/"), "-");
         */
         // return ArrayDot(Gradient, ArrayOp(ArrayOp(Size ** 2, ArrayOp(ArrayIdentity, ArrayOp(this.Inputs, 2, "**"), "*"), "*"), ArrayOp(Size - 1, ArrayOp(ArraySum(ArrayOp(this.Inputs, 2, "**"), 1), 2, "**"), "*"), "/"));
-        return ArrayDot(Gradient, ArrayOp(ArrayOp(ArrayOp(Size ** 2, ArrayOp(ArrayIdentity, ArrayOp(this.Inputs, 2, "**"), "*"), "*"), ArrayOp(Size - 1, ArrayOp(ArraySum(ArrayOp(this.Inputs, 2, "**"), 1), 2, "**"), "*"), "/"), -1, "*"));
+        // return ArrayDot(Gradient, ArrayOp(ArrayOp(ArrayOp(Size ** 2, ArrayOp(ArrayIdentity, ArrayOp(this.Inputs, 2, "**"), "*"), "*"), ArrayOp(Size - 1, ArrayOp(ArraySum(ArrayOp(this.Inputs, 2, "**"), 1), 2, "**"), "*"), "/"), -1, "*"));
+        return ;
     }
 }
 
