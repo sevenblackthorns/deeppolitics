@@ -132,3 +132,7 @@ export function MSEd(Outputs, Targets) {
 export function CrossEntropyLoss(Outputs, Targets) {
     return ArrayOp(ArrayOp(Targets, ArrayOp(Outputs, Math.E, "log"), "+"), -1, "*");
 }
+
+export function CELd(Outputs, Targets) {
+    return ArrayOp(Outputs, Targets, "-");
+}
