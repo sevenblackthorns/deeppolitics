@@ -19,7 +19,7 @@ for (let Epoch=0; Epoch < 1000; Epoch++) {
         let Err = CrossEntropyLoss(X, Y);
         console.log(Err);
         Loss += ArraySum(Err, 0) / X.length;
-        let Gradient = Err;
+        let Gradient = CSLd(X, Y);
         for (let Layer=Layers.length - 1; Layer >= 0; Layer--) {
             Gradient = Layers[Layer].backward(Gradient, 0.1);
         }
