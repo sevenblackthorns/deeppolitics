@@ -84,7 +84,8 @@ export class Norm {
         this.Mu = ArrayOp(ArraySum(Inputs, 1), Inputs[0].length, "/");
         this.X = ArrayOp(Inputs, this.Mu, "-");
         this.Variance = ArrayOp(ArraySum(ArrayOp(Inputs, 2, "**"), 1), Inputs[0].length, "/");
-        this.Outputs = ArrayOp(this.X, ArrayOp(this.Variance, 10 ** -100, "+"), "/");
+        this.Outputs = ArrayOp(this.X, this.Variance, "/");
+        // this.Outputs = ArrayOp(this.X, ArrayOp(this.Variance, 10 ** -100, "+"), "/");
         return this.Outputs;
     }
 
@@ -102,12 +103,14 @@ export class Norm {
                 }
             }
         }
+        /*
         let GradientMean = ArrayOp(ArraySum(Gradient, 1), Size, "/");
         let Variance = ArrayOp(ArraySum(ArrayOp(Gradient, 2, "**"), 1), Size, "/");
         let GSubM = ArrayOp(Gradient, GradientMean, "-");
         return ArrayOp(ArrayOp(ArrayOp(ArrayOp(Size, ArrayIdentity, "*"), 1, "-"), ArrayOp(ArrayOp(Size, Variance, "*"), 10 ** -100, "+"), "/"), ArrayOp(ArrayDot(GSubM, ArrayTranspose(GSubM)), ArrayOp(ArrayOp(Size, ArrayOp(Variance, 3, "**"), "*"), 10 ** -100, "+"), "/"), "-");
+        */
         // return ArrayDot(Gradient, ArrayOp(ArrayOp(Size ** 2, ArrayOp(ArrayIdentity, ArrayOp(this.Inputs, 2, "**"), "*"), "*"), ArrayOp(Size - 1, ArrayOp(ArraySum(ArrayOp(this.Inputs, 2, "**"), 1), 2, "**"), "*"), "/"));
-        // return ArrayDot(Gradient, ArrayOp(ArrayOp(ArrayOp(Size ** 2, ArrayOp(ArrayIdentity, ArrayOp(this.Inputs, 2, "**"), "*"), "*"), ArrayOp(Size - 1, ArrayOp(ArraySum(ArrayOp(this.Inputs, 2, "**"), 1), 2, "**"), "*"), "/"), -1, "*"));
+        return ArrayDot(Gradient, ArrayOp(ArrayOp(ArrayOp(Size ** 2, ArrayOp(ArrayIdentity, ArrayOp(this.Inputs, 2, "**"), "*"), "*"), ArrayOp(Size - 1, ArrayOp(ArraySum(ArrayOp(this.Inputs, 2, "**"), 1), 2, "**"), "*"), "/"), -1, "*"));
     }
 }
 
