@@ -1,4 +1,4 @@
-import {SimpleArrayRank, ArrayShape, ArrayOp, PrintArray, ArrayReshape, ArrayIndex, ArrayDot, ArrayRandom, ArrayFill, ArrayTranspose, ArrayWhere} from "./arraymath.js";
+import {SimpleArrayRank, ArrayShape, ArrayOp, PrintArray, ArrayReshape, ArrayIndex, ArrayDot, ArrayRandom, ArrayFill, ArrayTranspose, ArrayWhere, ArraySum} from "./arraymath.js";
 import {Dense, PReLU, CrossEntropyLoss, Softmax, Norm} from "./neuralnetwork.js";
 
 let Layers = [new Dense(4, 2), new PReLU(0.01), new Norm(), new Dense(2, 2), new PReLU(0.01), new Norm(), new Softmax()];
