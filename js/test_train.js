@@ -2,7 +2,7 @@ import {SimpleArrayRank, ArrayShape, ArrayOp, PrintArray, ArrayReshape, ArrayInd
 import {Dense, PReLU, MSE, MSEd, Softmax, Norm} from "./neuralnetwork.js";
 
 let Layers = [new Dense(4, 2), new PReLU(0.01), new Norm(), new Dense(2, 2), new PReLU(0.01), new Norm(), new Softmax()];
-let Data = [[[0, 1, 0, 1], [0, 1]], [[0, 1, 1, 0], [1, 0]], [[1, 0, 0, 1], [1, 0]], [[1, 0, 1, 0], [1, 0]]];
+let Data = [[[0, 1, 0, 1], [0, 1]], [[0, 1, 1, 0], [1, 0]], [[1, 0, 0, 1], [1, 0]], [[1, 0, 1, 0], [0, 1]]];
 for (let Epoch=0; Epoch < 1000; Epoch++) {
     let Loss = 0;
     for (let i=0; i < Data.length; i++) {
