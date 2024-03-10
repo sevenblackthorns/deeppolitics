@@ -116,6 +116,9 @@ export function ArrayOp(Array0, Array1, Op) {
         else if (Op == "!=") {
             return Array0 != Array1;
         }
+        else if (Op == "log") {
+            return Math.log(Array0, Array1);
+        }
         else {
             throw "DEEP:2 - INVALID OPERATOR ERROR";
         }
