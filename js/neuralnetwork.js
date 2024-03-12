@@ -52,40 +52,7 @@ export class Softmax {
     }
 
     backward(Gradient, _LearningRate) {
-        /*
-        let ArrayIdentity = [];
-        let ArrayTiled = [];
-        // let Size = ArraySum(ArrayShape(Gradient), 0);
-        let Size = Gradient[0].length;
-        for (let i=0; i < Size; i++) {
-            ArrayIdentity.push([]);
-            ArrayTiled.push(this.Outputs);
-            for (let j=0; j < Size; j++) {
-                if (j == i) {
-                    ArrayIdentity[i][j] = 1;
-                }
-                else {
-                    ArrayIdentity[i][j] = 0;
-                }
-            }
-        }
-        ArrayTiled = ArrayReshape(ArrayTiled, ArrayShape(ArrayIdentity));
-        return ArrayDot(Gradient, ArrayOp(ArrayTiled, ArrayOp(ArrayIdentity, ArrayTiled, "-"), "*"));
-        */
-        let ArrayIdentity = [];
-        let Size = Gradient[0].length;
-        for (let i=0; i < Size; i++) {
-            ArrayIdentity.push([]);
-            for (let j=0; j < Size; j++) {
-                if (j == i) {
-                    ArrayIdentity[i][j] = 0;
-                }
-                else {
-                    ArrayIdentity[i][j] = 1;
-                }
-            }
-        }
-        return ArrayDot(Gradient, ArrayOp(ArrayOp(ArrayOp(Size, this.EPowX, "*"), ArrayOp(this.EPowX, ArrayIdentity, "*"), "*"), ArrayOp(ArraySum(this.EPowX, 1), 2, "**"), "/"));
+        return ArrayOp(Gradient, Output, "*");
     }
 }
 
