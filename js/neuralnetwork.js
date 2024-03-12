@@ -52,7 +52,7 @@ export class Softmax {
     }
 
     backward(Gradient, _LearningRate) {
-        return ArrayOp(Gradient, Output, "*");
+        return ArrayOp(ArrayOp(1, ArraySum(this.EPowX, 1), "/"), this.EPowX, "*");
     }
 }
 
@@ -72,20 +72,7 @@ export class Norm {
     }
 
     backward(Gradient, _LearningRate) {
-        let n = Gradient[0].length;
-        let Id = [];
-        for (let i = 0; i < n; i++) {
-            Id.push([])
-            for (let j = 0; i < n; j++) {
-                if (i == j) {
-                    Id[i].push(1);
-                }
-                else {
-                    Id[i].push(0);
-                }
-            }
-        }
-        
+        return Gradient;
     }
 }
 
