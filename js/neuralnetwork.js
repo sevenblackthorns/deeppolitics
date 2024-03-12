@@ -67,13 +67,25 @@ export class Norm {
         this.Mu = ArrayOp(ArraySum(Inputs, 1), Inputs[0].length, "/");
         this.X = ArrayOp(Inputs, this.Mu, "-");
         this.Variance = ArrayOp(ArraySum(ArrayOp(this.X, 2, "**"), 1), Inputs[0].length, "/");
-        this.Outputs = ArrayOp(this.X, this.Variance, "/");
-        // this.Outputs = ArrayOp(this.X, ArrayOp(this.Variance, 10 ** -100, "+"), "/");
+        this.Outputs = ArrayOp(this.X, ArrayOp(this.Variance, 10 ** -100, "+"), "/");
         return this.Outputs;
     }
 
     backward(Gradient, _LearningRate) {
-        return Gradient;
+        let n = Gradient[0].length;
+        let Id = [];
+        for (let i = 0; i < n; i++) {
+            Id.push([])
+            for (let j = 0; i < n; j++) {
+                if (i == j) {
+                    Id[i].push(1);
+                }
+                else {
+                    Id[i].push(0);
+                }
+            }
+        }
+        
     }
 }
 
