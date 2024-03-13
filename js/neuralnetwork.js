@@ -52,7 +52,19 @@ export class Softmax {
     }
 
     backward(Gradient, _LearningRate) {
-        return ArrayOp(ArrayOp(1, ArraySum(this.EPowX, 1), "/"), this.EPowX, "*");
+        let Diag = [];
+        for (let i = 0; i < Gradient[0].length; i++) {
+            Diag.push([]);
+            for (let j = 0; i < Gradient[0].length; i++) {
+                if (i == j) {
+                    Diag[i][j] = ArrayOp(1, Gradient[i], "-");
+                }
+                else {
+                    Diag[i][j] = ArrayOp(Gradient[j], -1, "*")
+                }
+            }
+        }
+        return ArrayDot(Gradient, Diag);
     }
 }
 
