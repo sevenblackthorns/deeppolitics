@@ -57,21 +57,27 @@ export class Softmax {
 }
 
 export class Norm {
-    constructor() {
+    constructor(Axis) {
         this.Inputs = [];
         this.Outputs = [];
+        this.Gamma = Math.random();
+        this.Beta = Math.random();
+        this.Axis = Axis;
     }
 
     forward(Inputs) {
         this.Inputs = Inputs;
-        this.Mu = ArrayOp(ArraySum(Inputs, 1), Inputs[0].length, "/");
+        this.Mu = ArrayOp(ArraySum(Inputs, 1), ArrayShape(Inputs)[this.Axis], "/");
         this.X = ArrayOp(Inputs, this.Mu, "-");
-        this.Variance = ArrayOp(ArraySum(ArrayOp(this.X, 2, "**"), 1), Inputs[0].length, "/");
-        this.Outputs = ArrayOp(this.X, ArrayOp(this.Variance, 10 ** -100, "+"), "/");
+        this.Variance = ArrayOp(ArraySum(ArrayOp(this.X, 2, "**"), this.Axis), ArrayShape(Inputs)[this.Axis], "/");
+        this.Outputs = ArrayOp(ArrayOp(ArrayOp(this.X, ArrayOp(this.Variance, 10 ** -100, "+"), "/"), this.Gamma, "*"), this.Beta, "+");
         return this.Outputs;
     }
 
-    backward(Gradient, _LearningRate) {
+    backward(Gradient, LearningRate) {
+        let GammaGradient = ArraySum(ArrayOp(ArrayOp(Gradient, this.Outputs, "*"), ArrayShape(Inputs)[this.Axis], "/").flat(), 0);
+        this.Gamma = ArrayOp(this.Gamma, ArrayOp(GammaGradient[0], LearningRate, "*"), "-");
+        this.Beta = ArrayOp(this.Beta, ArrayOp(ArraySum(ArrayOp(Gradient, ArrayShape(Inputs)[this.Axis], "/").flat(), 0), LearningRate, "*"), "-");
         return Gradient;
     }
 }
