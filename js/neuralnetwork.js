@@ -75,10 +75,11 @@ export class Norm {
     }
 
     backward(Gradient, LearningRate) {
+        let InputGradient = 0;
         let GammaGradient = ArraySum(ArrayOp(ArrayOp(Gradient, this.Outputs, "*"), ArrayShape(Inputs)[this.Axis], "/").flat(), 0);
         this.Gamma = ArrayOp(this.Gamma, ArrayOp(GammaGradient[0], LearningRate, "*"), "-");
         this.Beta = ArrayOp(this.Beta, ArrayOp(ArraySum(ArrayOp(Gradient, ArrayShape(Inputs)[this.Axis], "/").flat(), 0), LearningRate, "*"), "-");
-        return Gradient;
+        return InputGradient;
     }
 }
 
