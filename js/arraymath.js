@@ -242,51 +242,20 @@ export function ArrayReshape(Array0, NewShape0) {
     return NewArray0;
 }
 
-export function ArrayDot(Array0, Array1) {
+export function ArrayDot(Array0, Array1, Axes) {
     let Shape0 = ArrayShape(Array0);
     let Shape1 = ArrayShape(Array1);
-    if (Shape0[Shape0.length - 2] != Shape1[Shape1.length - 1]) {
-        throw "DEEP:4 - SHAPES " + Shape0 + " AND " + Shape1 + " DO NOT HAVE MATCHING LAST TWO DIMENSIONS.";
+    for (let i = 0; i < (Shape0.length - Shape1.length); i++) {
+        Array1 = [Array1];
+        Shape1 = [1].concat(Shape1);
     }
-    if (Shape0.length != Shape1.length) {
-        throw "DEEP:5 - SHAPES " + Shape0 + " AND " + Shape1 + " DO NOT HAVE MATCHING LENGTH.";
+    for (let i = 0; i < (Shape1.length - Shape0.length); i++) {
+        Array0 = [Array0];
+         Shape0 = [1].concat(Shape0);
     }
-    if (Shape0.length > 2) {
-        let Array2 = [];
-        for (i = 0; i < Shape0.length; i++) {
-            Array2[i] = ArrayDot(Array0[i], Array1[i]);
-        }
-        return Array2;
+    if (Shape0[Axes[0][1]] != Shape0[Axes[1][0]]) {
+        throw "DEEP 4: INNER DIMENSION NOT MATCHING ERROR.";
     }
-    let Array2 = [];
-    let ShapeSum = [];
-    for (let i=2; i < Shape0.length; i++) {
-        if (Shape0[i] != Shape1[i]) {
-            throw "DEEP:1 - SHAPES " + Shape0 + " AND " + Shape1 + " ARE NOT COMPATIBLE.";
-        }
-        ShapeSum.push(Shape0[i]);
-    }
-    let Sum = 0;
-    if (ShapeSum.length != 0) {
-        let Sum = ArrayFill(ShapeSum, 0);
-    }
-    for (let i=0; i < Shape0[0]; i++) {
-        Array2.push([]);
-        for (let j=0; j < Shape1[1]; j++) {
-            Array2[i].push([]);
-            Sum = ArrayOp(Sum, 0, "*");
-            for (let k=0; k < Shape1[0]; k++) {
-                if (ShapeSum.lengh == 0) {
-                    Sum += ArrayOp(Array0[i][k], Array1[k][j], "*");
-                }
-                else {
-                    Sum = ArrayOp(Sum, ArrayOp(Array0[i][k], Array1[k][j], "*"), "+");
-                }
-            }
-            Array2[i][j] = Sum;
-        }
-    }
-    return Array2;
 }
 
 export function ArrayTranspose(Array0) {
