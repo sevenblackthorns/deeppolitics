@@ -253,14 +253,40 @@ export function ArrayDot(Array0, Array1, Axes) {
         Array0 = [Array0];
          Shape0 = [1].concat(Shape0);
     }
-    if (Shape0[Axes[0][1]] != Shape0[Axes[1][0]]) {
+    if (Shape0[Axes[0]] != Shape1[Axes[1] - 1]) {
         throw "DEEP: 4 - INNER DIMENSION NOT MATCHING ERROR.";
     }
-    if (Axes[0][1] == 0 && Axes[1][1] == 0) {
-        
-    }
-    else if (Axes[0][0] == 0 && Axes[1][0] == 0) {
+    else if (Axes[0] != 0 && Axes[1] == 0) {
         let Array2 = [];
+        if (Shape0[0] % Shape1[0] != 0 && Shape1[0] % Shape0[0] != 0) {
+            throw "DEEP: 5 - DIMENSIONS NOT EQUAL.";
+        }
+        for (let i = 0; i < max(Shape0[0], Shape1[0]); i++) {
+            Array2 = ArrayDot(Array0[i % Shape0[0]], Array1, [Axes[0] - 1, 0]);
+        }
+    }
+    else if (Axes[0] == 0 && Axes[1] != 0) {
+        let Array2 = [];
+        if (Shape0[0] % Shape1[0] != 0 && Shape1[0] % Shape0[0] != 0) {
+            throw "DEEP: 5 - DIMENSIONS NOT EQUAL.";
+        }
+        for (let i = 0; i < max(Shape0[0], Shape1[0]); i++) {
+            Array2 = ArrayDot(Array0, Array1[i % Shape1[0]], [0, Axes[1] - 1]);
+        }
+    }
+    else if (Axes[0] == 0 && Axes[1] == 0) {
+        let Array2 = [];
+        for (let i = 0; i < Shape0[0]; i++) {
+            Array2[i] = [];
+            for (let j = 0; j < Shape1[1]; j++) {
+                let sum = 0;
+                for (let k = 0; k < Shape0[1]; k++) {
+                    sum = ArrayOp(sum, ArrayOp(Array0[i][k], Array1[k][j], "*"), "+");
+                }
+                Array2[i][j] = sum;
+            }
+        }
+        return Array2;
     }
     else {
         let Array2 = [];
@@ -268,7 +294,7 @@ export function ArrayDot(Array0, Array1, Axes) {
             throw "DEEP: 5 - DIMENSIONS NOT EQUAL.";
         }
         for (let i = 0; i < max(Shape0[0], Shape1[0]); i++) {
-            Array2 = ArrayDot(Array0[i % Shape0[0]], Array0[i % Shape0[0]], ArrayOp(Axes, 1, "-"));
+            Array2 = ArrayDot(Array0[i % Shape0[0]], Array1[i % Shape1[0]], ArrayOp(Axes, 1, "-"));
         }
     }
 }
