@@ -254,7 +254,22 @@ export function ArrayDot(Array0, Array1, Axes) {
          Shape0 = [1].concat(Shape0);
     }
     if (Shape0[Axes[0][1]] != Shape0[Axes[1][0]]) {
-        throw "DEEP 4: INNER DIMENSION NOT MATCHING ERROR.";
+        throw "DEEP: 4 - INNER DIMENSION NOT MATCHING ERROR.";
+    }
+    if (Axes[0][1] == 0 && Axes[1][1] == 0) {
+        
+    }
+    else if (Axes[0][0] == 0 && Axes[1][0] == 0) {
+        let Array2 = [];
+    }
+    else {
+        let Array2 = [];
+        if (Shape0[0] % Shape1[0] != 0 && Shape1[0] % Shape0[0] != 0) {
+            throw "DEEP: 5 - DIMENSIONS NOT EQUAL.";
+        }
+        for (let i = 0; i < max(Shape0[0], Shape1[0]); i++) {
+            Array2 = ArrayDot(Array0[i % Shape0[0]], Array0[i % Shape0[0]], ArrayOp(Axes, 1, "-"));
+        }
     }
 }
 
