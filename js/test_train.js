@@ -1,7 +1,7 @@
 import {SimpleArrayRank, ArrayShape, ArrayOp, PrintArray, ArrayReshape, ArrayIndex, ArrayDot, ArrayRandom, ArrayFill, ArrayTranspose, ArrayWhere, ArraySum} from "./arraymath.js";
 import {Dense, PReLU, CrossEntropyLoss, Softmax, Norm, CELd} from "./neuralnetwork.js";
 
-let Layers = [new Dense(4, 2), new PReLU(0.01), new Norm(), new Dense(2, 2), new PReLU(0.01), new Norm(), new Softmax()];
+let Layers = [new Dense(4, 2), new PReLU(0.01), new Dense(2, 2), new PReLU(0.01), new Softmax()];
 let Data = [[[0, 1, 0, 1], [0, 1]], [[0, 1, 1, 0], [1, 0]], [[1, 0, 0, 1], [1, 0]], [[1, 0, 1, 0], [0, 1]]];
 for (let Epoch=0; Epoch < 1000; Epoch++) {
     let Loss = 0;
