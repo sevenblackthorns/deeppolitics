@@ -296,6 +296,7 @@ export function ArrayDot(Array0, Array1, Axes) {
         for (let i = 0; i < max(Shape0[0], Shape1[0]); i++) {
             Array2 = ArrayDot(Array0[i % Shape0[0]], Array1[i % Shape1[0]], ArrayOp(Axes, 1, "-"));
         }
+        return Array2;
     }
 }
 
