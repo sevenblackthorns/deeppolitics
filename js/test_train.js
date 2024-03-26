@@ -10,6 +10,7 @@ for (let Epoch=0; Epoch < 1000; Epoch++) {
         let Y = ArrayReshape(Data[i][1], [1, 2]);
         for (let Layer=0; Layer < Layers.length; Layer++) {
             X = Layers[Layer].forward(X);
+            console.log(Layer)
         }
         console.log("X:");
         PrintArray(X);
