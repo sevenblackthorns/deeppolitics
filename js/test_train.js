@@ -25,6 +25,7 @@ for (let Epoch=0; Epoch < 1000; Epoch++) {
         console.log(Gradient);
         for (let Layer=Layers.length - 1; Layer >= 0; Layer--) {
             Gradient = Layers[Layer].backward(Gradient, 0.1);
+            console.log(Gradient)
         }
     }
     console.log(Loss / Data.length);
