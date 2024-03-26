@@ -9,12 +9,12 @@ export class Dense {
 
     forward(Inputs) {
         this.Inputs = Inputs;
-        return ArrayOp(ArrayDot(Inputs, this.Weights), this.Biases, "+");
+        return ArrayOp(ArrayDot(Inputs, this.Weights, [-2, -2]), this.Biases, "+");
     }
 
     backward(Gradient, LearningRate) {
-        let WeightGradient = ArrayDot(ArrayTranspose(this.Inputs), Gradient);
-        let InputGradient = ArrayDot(Gradient, ArrayTranspose(this.Weights));
+        let WeightGradient = ArrayDot(ArrayTranspose(this.Inputs), Gradient, [-2, -2]);
+        let InputGradient = ArrayDot(Gradient, ArrayTranspose(this.Weights), [-2, -2]);
         this.Weights = ArrayOp(this.Weights, ArrayOp(WeightGradient, LearningRate, "*"), "-");
         this.Biases = ArrayOp(this.Biases, ArrayOp(Gradient, LearningRate, "*"), "-");
         return InputGradient;
@@ -52,7 +52,7 @@ export class Softmax {
     }
 
     backward(Gradient, _LearningRate) {
-        return ArrayDot(Gradient, ArrayOp(this.Outputs, ArrayOp(1, this.Outputs, "-"), "*"));
+        return ArrayDot(Gradient, ArrayOp(this.Outputs, ArrayOp(1, this.Outputs, "-"), "*"), [-2, -2]);
     }
 }
 
