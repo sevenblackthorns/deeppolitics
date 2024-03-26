@@ -259,7 +259,7 @@ export function ArrayDot(Array0, Array1, Axes) {
     if (Axes[1] < 0) {
         Axes[1] = Shape1.length + Axes[1];
     }
-    if (Shape0[Axes[0]] != Shape1[Axes[1] - 1]) {
+    if (Shape0[Axes[0]] != Shape1[Axes[1]]) {
         throw "DEEP: 4 - INNER DIMENSION NOT MATCHING ERROR.";
     }
     else if (Axes[0] != 0 && Axes[1] == 0) {
